@@ -7,7 +7,8 @@
 <title>PAR PARFUM — The Art of Scent</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
 * {
@@ -23,33 +24,32 @@ html, body {
 }
 
 body {
-  background: #151410;
-  color: #f5eee1;
+  background: #11110f;
+  color: #f4efe6;
   font-family: 'Montserrat', sans-serif;
 }
 
 .par-poster {
-  --accent: #d7b77e;
-  --glow: rgba(205, 161, 92, .25);
-  --liquid: #b78b4c;
+  --accent: #c5a36c;
+  --glow: rgba(205,161,92,.22);
   --mood: #29231a;
 
+  width: 100%;
   height: 100vh;
   height: 100svh;
-  width: 100%;
-  min-height: 500px;
-  position: relative;
-  overflow: hidden;
-  isolation: isolate;
-  background:
-    radial-gradient(ellipse at 50% 50%, var(--mood), #151410 75%);
-  transition: background 1s ease;
+  min-height: 0;
+  padding: 22px 5.5% 17px;
   display: flex;
   flex-direction: column;
-  padding: 22px 5.5% 18px;
-}
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
 
-/* BACKGROUND DETAILS */
+  background:
+    radial-gradient(ellipse at 52% 48%, var(--mood), #11110f 78%);
+
+  transition: background 1s ease;
+}
 
 .par-poster::before {
   content: "";
@@ -60,8 +60,8 @@ body {
   max-height: 700px;
   border-radius: 50%;
   background: var(--glow);
-  filter: blur(100px);
-  top: 12%;
+  filter: blur(110px);
+  top: 10%;
   left: 50%;
   transform: translateX(-50%);
   z-index: -1;
@@ -72,7 +72,7 @@ body {
   content: "";
   position: absolute;
   inset: 12px;
-  border: 1px solid rgba(216, 190, 145, .13);
+  border: 1px solid rgba(216,190,145,.15);
   pointer-events: none;
   z-index: 10;
 }
@@ -85,6 +85,7 @@ body {
   justify-content: space-between;
   position: relative;
   z-index: 11;
+  flex-shrink: 0;
 }
 
 .par-logo {
@@ -109,34 +110,33 @@ body {
   text-transform: uppercase;
 }
 
-/* TOP LINE */
-
 .par-line {
   height: 1px;
   background: linear-gradient(90deg, transparent, #9d8965, transparent);
   margin-top: 13px;
   opacity: .65;
+  flex-shrink: 0;
 }
 
-/* MAIN */
+/* MAIN LAYOUT */
 
 .par-main {
   flex: 1;
   min-height: 0;
   display: grid;
-  grid-template-columns: 1fr 1.15fr 1fr;
+  grid-template-columns: 1fr 1.3fr 1fr;
   align-items: center;
   position: relative;
   z-index: 2;
 }
 
-/* LEFT TEXT */
+/* LEFT */
 
 .par-left {
   text-align: left;
   position: relative;
   z-index: 3;
-  padding-bottom: 25px;
+  padding-bottom: 15px;
 }
 
 .par-overline {
@@ -160,6 +160,8 @@ body {
 .par-heading em {
   font-weight: 300;
   color: var(--accent);
+  font-style: normal;
+  transition: color .7s;
 }
 
 .par-description {
@@ -173,7 +175,7 @@ body {
 }
 
 .par-notes {
-  margin-top: 26px;
+  margin-top: 25px;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -195,7 +197,7 @@ body {
 
 .par-discover {
   display: inline-block;
-  margin-top: 32px;
+  margin-top: 28px;
   padding: 13px 24px;
   border: 1px solid var(--accent);
   text-decoration: none;
@@ -211,32 +213,34 @@ body {
   color: #17130e;
 }
 
-/* CENTER PERFUME */
+/* CENTER IMAGE */
 
 .par-center {
+  width: 100%;
   height: 100%;
   min-height: 0;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: visible;
 }
 
 .par-halo {
   position: absolute;
-  width: min(31vw, 390px);
+  width: min(36vw, 480px);
   aspect-ratio: 1;
   border-radius: 50%;
   background: radial-gradient(circle, var(--glow), transparent 68%);
-  filter: blur(18px);
-  transition: background 1s;
+  filter: blur(22px);
+  transition: background 1s ease;
 }
 
 .par-orbit {
   position: absolute;
-  width: min(34vw, 410px);
+  width: min(37vw, 440px);
   aspect-ratio: 1;
-  border: 1px solid rgba(218, 195, 154, .17);
+  border: 1px solid rgba(218,195,154,.17);
   border-radius: 50%;
   transform: scaleY(.38) rotate(-25deg);
 }
@@ -255,165 +259,50 @@ body {
 
 .par-orbit-two {
   position: absolute;
-  width: min(29vw, 350px);
+  width: min(31vw, 370px);
   aspect-ratio: 1;
-  border: 1px solid rgba(218, 195, 154, .12);
+  border: 1px solid rgba(218,195,154,.12);
   border-radius: 50%;
   transform: scaleY(.38) rotate(30deg);
 }
 
-/* BOTTLE */
+/* REAL PHOTOGRAPHIC IMAGE */
 
-.par-bottle-wrap {
-  position: relative;
-  width: 210px;
-  height: 340px;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: flex-start;
-  z-index: 3;
-  animation: bottleFloat 5s ease-in-out infinite;
-  filter: drop-shadow(0 25px 30px rgba(0,0,0,.45));
-}
-
-.par-bottle-wrap.changing {
-  animation: bottleEnter .75s ease both;
-}
-
-.par-cap {
-  height: 46px;
-  width: 57px;
-  background: linear-gradient(
-    90deg,
-    #76603e,
-    #f2dba9,
-    #a78b57,
-    #f5dfad,
-    #725b38
-  );
-  border: 1px solid #d7bf8d;
-  border-radius: 5px 5px 2px 2px;
-  position: relative;
-  z-index: 2;
-  box-shadow: 0 4px 12px #0008;
-}
-
-.par-cap::after {
-  content: "";
-  position: absolute;
-  inset: 5px 8px;
-  border: 1px solid #ffffff66;
-}
-
-.par-neck {
-  height: 20px;
-  width: 66px;
-  background: linear-gradient(90deg, #8e7248, #e8d1a2, #93784e);
-  border-left: 1px solid #ead8ad;
-  border-right: 1px solid #ead8ad;
-}
-
-.par-glass {
-  height: 245px;
-  width: 175px;
-  position: relative;
-  border: 2px solid rgba(228, 209, 170, .8);
-  border-radius: 19px 19px 24px 24px;
-  background: linear-gradient(
-    110deg,
-    rgba(255,255,255,.24),
-    rgba(255,255,255,.03) 20%,
-    rgba(255,255,255,.08) 55%,
-    rgba(255,255,255,.22)
-  );
-  box-shadow:
-    inset 7px 0 15px rgba(255,255,255,.13),
-    inset -7px 0 15px rgba(0,0,0,.15),
-    0 20px 45px rgba(0,0,0,.3);
-  overflow: hidden;
+.par-image-wrap {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.par-glass::before {
-  content: "";
-  position: absolute;
-  width: 22px;
-  height: 90%;
-  top: 5%;
-  left: 9px;
-  border-radius: 50%;
-  background: rgba(255,255,255,.12);
-  filter: blur(5px);
-  z-index: 3;
-}
-
-.par-liquid {
-  position: absolute;
-  bottom: 0;
-  height: 67%;
-  width: 100%;
-  background: linear-gradient(
-    90deg,
-    color-mix(in srgb, var(--liquid), black 25%),
-    var(--liquid),
-    color-mix(in srgb, var(--liquid), white 18%),
-    var(--liquid)
-  );
-  opacity: .8;
-  transition: background 1s ease;
-}
-
-.par-liquid::before {
-  content: "";
-  position: absolute;
-  height: 10px;
-  width: 100%;
-  top: -4px;
-  border-radius: 50%;
-  background: rgba(255,255,255,.22);
-}
-
-.par-label {
   position: relative;
-  z-index: 4;
-  width: 80%;
-  padding: 23px 5px;
-  text-align: center;
-  border-top: 1px solid rgba(233, 214, 174, .55);
-  border-bottom: 1px solid rgba(233, 214, 174, .55);
-  background: rgba(22, 19, 14, .25);
-  color: #f6e9d0;
-  text-shadow: 0 2px 5px #0008;
+  z-index: 3;
+  animation: imageFloat 6s ease-in-out infinite;
 }
 
-.par-label-name {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 34px;
-  letter-spacing: 6px;
+.par-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-height: 620px;
+  object-fit: contain;
+  object-position: center;
+  filter: drop-shadow(0 25px 35px rgba(0,0,0,.42));
+  transition: opacity .55s ease, transform .75s ease, filter .7s ease;
 }
 
-.par-label-type {
-  font-size: 7px;
-  letter-spacing: 4px;
-  margin-top: 6px;
+.par-image.changing {
+  opacity: 0;
+  transform: translateY(24px) scale(.94);
+  filter: blur(8px);
 }
 
-.par-base {
-  width: 190px;
-  height: 10px;
-  background: linear-gradient(90deg, transparent, #c7a875, transparent);
-  opacity: .65;
-}
-
-/* RIGHT SIDE */
+/* RIGHT */
 
 .par-right {
   text-align: right;
   z-index: 3;
-  padding-bottom: 25px;
+  padding-bottom: 15px;
 }
 
 .par-number {
@@ -456,7 +345,8 @@ body {
   position: relative;
   z-index: 5;
   padding-top: 13px;
-  border-top: 1px solid rgba(204, 179, 137, .28);
+  border-top: 1px solid rgba(204,179,137,.28);
+  flex-shrink: 0;
 }
 
 .par-selector-heading {
@@ -476,7 +366,7 @@ body {
 
 .par-option {
   border: none;
-  border-top: 1px solid rgba(211, 188, 148, .25);
+  border-top: 1px solid rgba(211,188,148,.25);
   padding: 11px 5px 5px;
   background: transparent;
   color: #aaa08f;
@@ -545,6 +435,7 @@ body {
   text-transform: uppercase;
   position: relative;
   z-index: 5;
+  flex-shrink: 0;
 }
 
 .par-footer span:nth-child(2) {
@@ -553,22 +444,9 @@ body {
 
 /* ANIMATIONS */
 
-@keyframes bottleFloat {
+@keyframes imageFloat {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-12px); }
-}
-
-@keyframes bottleEnter {
-  0% {
-    opacity: 0;
-    transform: translateY(35px) scale(.85);
-    filter: blur(7px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-    filter: blur(0);
-  }
+  50% { transform: translateY(-9px); }
 }
 
 /* TABLET */
@@ -580,11 +458,7 @@ body {
   }
 
   .par-main {
-    grid-template-columns: .95fr 1fr .8fr;
-  }
-
-  .par-bottle-wrap {
-    transform: scale(.85);
+    grid-template-columns: .95fr 1.1fr .8fr;
   }
 
   .par-heading {
@@ -598,14 +472,17 @@ body {
   .par-right-quote {
     font-size: 19px;
   }
+
+  .par-image {
+    max-height: 500px;
+  }
 }
 
 /* MOBILE */
 
 @media (max-width: 600px) {
   .par-poster {
-    min-height: 0;
-    padding: 15px 5% 12px;
+    padding: 13px 5% 10px;
   }
 
   .par-poster::after {
@@ -626,83 +503,82 @@ body {
     letter-spacing: 1px;
   }
 
+  .par-line {
+    margin-top: 8px;
+  }
+
   .par-main {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto 1fr auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto minmax(0, 1fr);
     align-items: center;
-    padding-top: 15px;
+    padding-top: 10px;
   }
 
   .par-left {
-    grid-column: 1 / -1;
+    grid-column: 1;
     text-align: center;
     padding: 0;
-    order: 1;
   }
 
   .par-overline {
     font-size: 7px;
     letter-spacing: 3px;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
   }
 
   .par-heading {
-    font-size: clamp(38px, 10vw, 58px);
+    font-size: clamp(34px, 9vw, 51px);
     max-width: none;
     line-height: .9;
   }
 
   .par-description {
-    margin: 10px auto 0;
+    margin: 8px auto 0;
     font-size: 8px;
-    line-height: 1.6;
-    min-height: 26px;
-    max-width: 270px;
-  }
-
-  .par-notes {
-    display: none;
-  }
-
-  .par-discover {
-    display: none;
-  }
-
-  .par-center {
-    grid-column: 1 / -1;
-    grid-row: 2;
+    line-height: 1.55;
     min-height: 0;
+    max-width: 280px;
   }
 
-  .par-bottle-wrap {
-    transform: scale(.7);
-    transform-origin: center;
-  }
-
-  .par-halo {
-    width: 65vw;
-  }
-
-  .par-orbit {
-    width: 70vw;
-  }
-
-  .par-orbit-two {
-    width: 60vw;
-  }
-
+  .par-notes,
+  .par-discover,
   .par-right {
     display: none;
   }
 
+  .par-center {
+    grid-column: 1;
+    grid-row: 2;
+    min-height: 0;
+    height: 100%;
+  }
+
+  .par-image {
+    max-height: 100%;
+    width: 100%;
+  }
+
+  .par-halo {
+    width: 70vw;
+  }
+
+  .par-orbit {
+    width: 75vw;
+  }
+
+  .par-orbit-two {
+    width: 65vw;
+  }
+
   .par-bottom {
-    padding-top: 10px;
+    padding-top: 9px;
   }
 
   .par-selector-heading {
-    font-size: 7px;
-    letter-spacing: 3px;
-    margin-bottom: 9px;
+    font-size: 6px;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
   }
 
   .par-selector {
@@ -710,7 +586,7 @@ body {
   }
 
   .par-option {
-    padding: 9px 2px 3px;
+    padding: 8px 2px 3px;
   }
 
   .par-option-number {
@@ -719,7 +595,7 @@ body {
   }
 
   .par-option-name {
-    font-size: clamp(12px, 3.4vw, 18px);
+    font-size: clamp(11px, 3.3vw, 17px);
     letter-spacing: 0;
   }
 
@@ -728,24 +604,26 @@ body {
   }
 
   .par-footer {
-    font-size: 6px;
-    letter-spacing: 1px;
-    padding-top: 10px;
+    font-size: 5px;
+    letter-spacing: .5px;
+    padding-top: 9px;
   }
 }
 
+/* SHORT LAPTOP SCREENS */
+
 @media (max-height: 650px) and (min-width: 601px) {
   .par-poster {
-    padding-top: 12px;
-    padding-bottom: 10px;
+    padding-top: 11px;
+    padding-bottom: 8px;
   }
 
-  .par-bottle-wrap {
-    transform: scale(.78);
+  .par-image {
+    max-height: 440px;
   }
 
   .par-heading {
-    font-size: clamp(45px, 5vw, 65px);
+    font-size: clamp(42px, 5vw, 65px);
   }
 
   .par-description {
@@ -757,15 +635,22 @@ body {
   }
 
   .par-discover {
-    margin-top: 17px;
+    margin-top: 16px;
+  }
+
+  .par-bottom {
+    padding-top: 8px;
   }
 
   .par-selector-heading {
     margin-bottom: 8px;
   }
+}
 
-  .par-bottom {
-    padding-top: 8px;
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
   }
 }
 </style>
@@ -788,17 +673,17 @@ body {
     <!-- LEFT INFORMATION -->
 
     <section class="par-left">
+
       <div class="par-overline" id="overline">
-        A new expression of luxury
+        The art of radiance
       </div>
 
       <h1 class="par-heading" id="heading">
-        BEYOND<br><em>ORDINARY.</em>
+        A TOUCH<br><em>OF LIGHT.</em>
       </h1>
 
       <p class="par-description" id="description">
-        Discover a fragrance that captures your individuality.
-        An unforgettable expression of elegance.
+        Bright, effortless and captivating. A luminous fragrance inspired by the beauty of a new beginning.
       </p>
 
       <div class="par-notes">
@@ -808,13 +693,13 @@ body {
         </span>
       </div>
 
-      <a href="#collection" class="par-discover"
-         onclick="event.preventDefault(); selectNext();">
+      <a href="#collection" class="par-discover" id="discover">
         Discover the scent
       </a>
+
     </section>
 
-    <!-- CENTER BOTTLE -->
+    <!-- CENTER IMAGE -->
 
     <section class="par-center">
 
@@ -822,22 +707,13 @@ body {
       <div class="par-orbit"></div>
       <div class="par-orbit-two"></div>
 
-      <div class="par-bottle-wrap" id="bottle">
-        <div class="par-cap"></div>
-        <div class="par-neck"></div>
-
-        <div class="par-glass">
-          <div class="par-liquid"></div>
-
-          <div class="par-label">
-            <div class="par-label-name">PAR</div>
-            <div class="par-label-type" id="bottleName">
-              ÉCLAT
-            </div>
-          </div>
-        </div>
-
-        <div class="par-base"></div>
+      <div class="par-image-wrap">
+        <img
+          class="par-image"
+          id="fragranceImage"
+          src="images/Untitled%20design.png"
+          alt="PAR ÉCLAT fragrance"
+        >
       </div>
 
     </section>
@@ -845,12 +721,17 @@ body {
     <!-- RIGHT INFORMATION -->
 
     <section class="par-right">
+
       <div class="par-number" id="number">01</div>
+
       <div class="par-number-label">The fragrance</div>
+
       <div class="par-side-line"></div>
+
       <div class="par-right-quote" id="quote">
         A moment of light. A lasting impression.
       </div>
+
     </section>
 
   </main>
@@ -896,6 +777,7 @@ body {
       </button>
 
     </div>
+
   </section>
 
   <footer class="par-footer">
@@ -907,151 +789,255 @@ body {
 </div>
 
 <script>
+
+/* ==================================================
+   PAR PARFUM — FIVE FRAGRANCES
+   Images are loaded from the GitHub images folder.
+   ================================================== */
+
 const fragrances = [
+
   {
     name: "ÉCLAT",
     number: "01",
+    image: "images/Untitled%20design.png",
     heading: "A TOUCH<br><em>OF LIGHT.</em>",
     description: "Bright, effortless and captivating. A luminous fragrance inspired by the beauty of a new beginning.",
     notes: "Citrus · Jasmine · White Musk",
     quote: "A moment of light. A lasting impression.",
-    liquid: "#c99a51",
-    accent: "#e5c58e",
-    glow: "rgba(204, 157, 82, .30)",
+    accent: "#e0bd7d",
+    glow: "rgba(204,157,82,.30)",
     mood: "#302719",
     overline: "The art of radiance"
   },
+
   {
     name: "VELVET",
     number: "02",
+    image: "images/Untitled%20design2.png",
     heading: "FEEL THE<br><em>SOFTNESS.</em>",
     description: "An intimate floral embrace. Delicate petals meet sensual warmth in a fragrance that feels like silk.",
     notes: "Rose · Peony · Sandalwood",
     quote: "Softness is the ultimate sophistication.",
-    liquid: "#ad665e",
     accent: "#dba59a",
-    glow: "rgba(174, 91, 91, .28)",
+    glow: "rgba(174,91,91,.30)",
     mood: "#30201f",
     overline: "The art of softness"
   },
+
   {
     name: "NOIR",
     number: "03",
+    image: "images/Untitled%20design3.png",
     heading: "OWN THE<br><em>MYSTERY.</em>",
     description: "Bold, magnetic and unforgettable. A deep composition created for those who leave an impression.",
     notes: "Oud · Amber · Black Pepper",
     quote: "Some stories are best left mysterious.",
-    liquid: "#63412d",
     accent: "#bd956d",
-    glow: "rgba(126, 83, 51, .30)",
+    glow: "rgba(126,83,51,.32)",
     mood: "#211a16",
     overline: "The art of mystery"
   },
+
   {
     name: "AMOUR",
     number: "04",
+    image: "images/Untitled%20design4.png",
     heading: "MADE OF<br><em>EMOTION.</em>",
     description: "A romantic expression of warmth and desire. An elegant fragrance that lingers like a beautiful memory.",
     notes: "Rose · Vanilla · Pink Pepper",
     quote: "Wear the feeling. Remember the moment.",
-    liquid: "#bd827c",
     accent: "#e0aaa1",
-    glow: "rgba(192, 115, 125, .28)",
+    glow: "rgba(192,115,125,.30)",
     mood: "#302023",
     overline: "The art of emotion"
   },
+
   {
     name: "ESSENCE",
     number: "05",
+    image: "images/Untitled%20design5.png",
     heading: "PURE<br><em>BY NATURE.</em>",
     description: "Understated, harmonious and timeless. A refined blend inspired by nature and quiet luxury.",
     notes: "Green Tea · Cedar · White Flowers",
     quote: "True elegance never asks for attention.",
-    liquid: "#8c9875",
     accent: "#c3c9a2",
-    glow: "rgba(129, 151, 103, .27)",
+    glow: "rgba(129,151,103,.30)",
     mood: "#20251b",
     overline: "The art of simplicity"
   }
+
 ];
 
+
+/* ELEMENTS */
+
 const poster = document.getElementById("parPoster");
-const bottle = document.getElementById("bottle");
+const image = document.getElementById("fragranceImage");
 const options = document.querySelectorAll(".par-option");
 
 let currentIndex = 0;
 let autoPlay;
 
+
+/* CHANGE FRAGRANCE */
+
 function showFragrance(index) {
+
   currentIndex = index;
 
   const scent = fragrances[index];
 
-  // Update poster atmosphere
+  // Change background atmosphere
+
   poster.style.setProperty("--accent", scent.accent);
-  poster.style.setProperty("--liquid", scent.liquid);
   poster.style.setProperty("--glow", scent.glow);
   poster.style.setProperty("--mood", scent.mood);
 
-  // Update text
-  document.getElementById("overline").textContent = scent.overline;
-  document.getElementById("heading").innerHTML = scent.heading;
-  document.getElementById("description").textContent = scent.description;
-  document.getElementById("notes").textContent = scent.notes;
-  document.getElementById("number").textContent = scent.number;
-  document.getElementById("quote").textContent = scent.quote;
-  document.getElementById("bottleName").textContent = scent.name;
+  // Change text
 
-  // Animate bottle
-  bottle.classList.remove("changing");
-  void bottle.offsetWidth;
-  bottle.classList.add("changing");
+  document.getElementById("overline").textContent =
+    scent.overline;
+
+  document.getElementById("heading").innerHTML =
+    scent.heading;
+
+  document.getElementById("description").textContent =
+    scent.description;
+
+  document.getElementById("notes").textContent =
+    scent.notes;
+
+  document.getElementById("number").textContent =
+    scent.number;
+
+  document.getElementById("quote").textContent =
+    scent.quote;
+
+  // Update image with smooth transition
+
+  image.classList.add("changing");
+
+  const nextImage = new Image();
+
+  nextImage.onload = function() {
+
+    image.src = scent.image;
+    image.alt = "PAR " + scent.name + " fragrance";
+
+    requestAnimationFrame(() => {
+      image.classList.remove("changing");
+    });
+
+  };
+
+  nextImage.onerror = function() {
+
+    console.error("Could not load fragrance image:", scent.image);
+    image.classList.remove("changing");
+
+  };
+
+  nextImage.src = scent.image;
 
   // Highlight selected fragrance
+
   options.forEach((option, i) => {
-    option.classList.toggle("active", i === index);
+
+    option.classList.toggle(
+      "active",
+      i === index
+    );
+
+    option.setAttribute(
+      "aria-pressed",
+      i === index ? "true" : "false"
+    );
+
   });
+
 }
 
-// Click to change fragrance
+
+/* CLICK TO CHANGE */
+
 options.forEach((option) => {
+
   option.addEventListener("click", () => {
+
     const index = Number(option.dataset.index);
+
     showFragrance(index);
+
     restartAutoPlay();
+
   });
+
 });
 
-// Move to next fragrance
-function selectNext() {
-  showFragrance((currentIndex + 1) % fragrances.length);
+
+/* DISCOVER BUTTON */
+
+document.getElementById("discover").addEventListener("click", (event) => {
+
+  event.preventDefault();
+
+  const next = (currentIndex + 1) % fragrances.length;
+
+  showFragrance(next);
+
   restartAutoPlay();
+
+});
+
+
+/* AUTOMATIC ROTATION */
+
+function startAutoPlay() {
+
+  clearInterval(autoPlay);
+
+  autoPlay = setInterval(() => {
+
+    const next = (currentIndex + 1) % fragrances.length;
+
+    showFragrance(next);
+
+  }, 6000);
+
 }
 
-// Automatic rotation
-function startAutoPlay() {
-  autoPlay = setInterval(() => {
-    showFragrance((currentIndex + 1) % fragrances.length);
-  }, 6000);
-}
 
 function restartAutoPlay() {
+
   clearInterval(autoPlay);
+
   startAutoPlay();
+
 }
 
-// Start
-showFragrance(0);
-startAutoPlay();
 
-// Pause automatic rotation when the user interacts with the poster
+/* PAUSE ON HOVER */
+
 poster.addEventListener("mouseenter", () => {
+
   clearInterval(autoPlay);
+
 });
 
 poster.addEventListener("mouseleave", () => {
+
   startAutoPlay();
+
 });
+
+
+/* INITIALIZE */
+
+showFragrance(0);
+
+startAutoPlay();
+
 </script>
 
 </body>

@@ -4,24 +4,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#f3efe8">
-<title>PAR PARFUM — Fragrance, Reimagined</title>
+<meta name="theme-color" content="#211816">
+
+<title>PAR PARFUM — The Art of Scent</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
 :root {
-  --cream: #f3efe8;
-  --paper: #eae3d8;
-  --ink: #251f1d;
-  --muted: #81756c;
-  --wine: #773c43;
-  --gold: #b69a70;
-  --line: rgba(48, 37, 32, .17);
+  --dark: #211816;
+  --wine: #713b42;
+  --cream: #f1e9de;
+  --gold: #c5a77c;
+  --muted: #a99b8d;
   --serif: 'Cormorant Garamond', Georgia, serif;
-  --sans: 'DM Sans', Arial, sans-serif;
+  --sans: 'DM Sans', sans-serif;
 }
 
 * {
@@ -30,1107 +29,750 @@
   box-sizing: border-box;
 }
 
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 85px;
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
 
 body {
-  background: var(--cream);
-  color: var(--ink);
+  background: var(--dark);
+  color: var(--cream);
   font-family: var(--sans);
-  overflow-x: hidden;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
 }
 
 button {
   font: inherit;
 }
 
-/* -------------------------
-   ANNOUNCEMENT
-------------------------- */
-
-.announcement {
-  height: 29px;
-  background: var(--wine);
-  color: #f5eee6;
+.page {
+  width: 100%;
+  height: 100svh;
+  min-height: 500px;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 9px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+  background:
+    radial-gradient(ellipse at 72% 43%, rgba(133,85,69,.22), transparent 40%),
+    linear-gradient(120deg, #211816, #30211f 65%, #201715);
 }
 
-/* -------------------------
-   HEADER
-------------------------- */
+/* TOP BAR */
 
-.header {
-  height: 82px;
-  padding: 0 6%;
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  align-items: center;
-  background: rgba(243,239,232,.94);
-  border-bottom: 1px solid var(--line);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  backdrop-filter: blur(16px);
-}
-
-.nav-left,
-.nav-right {
+.topbar {
+  height: 76px;
+  min-height: 76px;
+  padding: 0 5%;
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 30px;
-}
-
-.nav-right {
-  justify-content: flex-end;
-}
-
-.nav-link {
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 1.8px;
-  color: #5c514b;
-  transition: color .3s;
-}
-
-.nav-link:hover {
-  color: var(--wine);
+  border-bottom: 1px solid rgba(197,167,124,.22);
+  position: relative;
+  z-index: 5;
 }
 
 .logo {
   font-family: var(--serif);
-  font-size: 43px;
-  font-weight: 400;
-  letter-spacing: 13px;
-  padding-left: 13px;
-  line-height: 1;
+  font-size: 42px;
+  letter-spacing: 12px;
+  color: var(--cream);
+  padding-left: 12px;
 }
 
-.menu-toggle {
-  display: none;
-  border: 0;
-  background: transparent;
-  font-size: 23px;
-  cursor: pointer;
-  color: var(--ink);
+.top-center {
+  font-size: 9px;
+  letter-spacing: 4px;
+  color: var(--gold);
+  text-transform: uppercase;
 }
 
-/* -------------------------
-   HERO
-------------------------- */
+.top-right {
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--muted);
+  text-transform: uppercase;
+}
 
-.hero {
-  min-height: 690px;
-  height: min(790px, calc(100svh - 111px));
-  max-height: 850px;
+/* MAIN ADVERTISEMENT */
+
+.main {
+  flex: 1;
+  min-height: 0;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 36% 39% 25%;
+  padding: 0 5%;
   position: relative;
-  overflow: hidden;
-  background: #eee8de;
 }
 
-.hero-copy {
-  padding: 90px 0 80px 12%;
+/* LEFT SIDE */
+
+.copy {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
+  padding: 20px 0;
   position: relative;
   z-index: 2;
 }
 
 .eyebrow {
-  color: var(--wine);
+  color: var(--gold);
   font-size: 9px;
   letter-spacing: 4px;
   text-transform: uppercase;
-  margin-bottom: 28px;
+  margin-bottom: 24px;
 }
 
-.hero h1 {
+.copy h1 {
   font-family: var(--serif);
-  font-size: clamp(76px, 10vw, 148px);
-  line-height: .78;
-  letter-spacing: -5px;
   font-weight: 300;
+  font-size: clamp(68px, 8.4vw, 130px);
+  line-height: .77;
+  letter-spacing: -4px;
 }
 
-.hero h1 span {
+.copy h1 em {
+  color: var(--gold);
+  font-weight: 300;
   display: block;
-  color: var(--wine);
-  font-style: italic;
-  margin-left: 48px;
+  margin-left: 32px;
 }
 
-.hero-description {
-  max-width: 340px;
-  color: #766a61;
-  font-size: 12px;
-  line-height: 2;
-  margin-top: 36px;
-  font-weight: 300;
-}
-
-.primary-button {
-  margin-top: 34px;
-  padding: 16px 29px;
-  background: var(--wine);
-  color: #fff8f0;
-  font-size: 9px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  border: 1px solid var(--wine);
-  transition: .35s;
-  display: inline-flex;
-  align-items: center;
-  gap: 22px;
-}
-
-.primary-button:hover {
-  background: transparent;
-  color: var(--wine);
-}
-
-.primary-button span {
-  font-size: 15px;
-}
-
-.hero-caption {
-  position: absolute;
-  bottom: 34px;
-  left: 12%;
-  color: #95877a;
-  font-size: 8px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-}
-
-.hero-visual {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background:
-    radial-gradient(ellipse at 50% 48%, #d9c9b5 0%, #e7ded1 44%, #eee8de 75%);
-  overflow: hidden;
-}
-
-.hero-visual::before {
-  content: "PAR";
-  position: absolute;
-  font-family: var(--serif);
-  font-size: clamp(170px, 28vw, 400px);
-  color: rgba(255,255,255,.23);
-  letter-spacing: 15px;
-  transform: rotate(-90deg);
-  white-space: nowrap;
-}
-
-.hero-image {
-  position: relative;
-  z-index: 2;
-  width: 78%;
-  height: 92%;
-  object-fit: contain;
-  filter: drop-shadow(0 30px 35px rgba(55,36,25,.18));
-  animation: heroFloat 7s ease-in-out infinite;
-}
-
-@keyframes heroFloat {
-  0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-13px); }
-}
-
-.hero-side-note {
-  position: absolute;
-  right: 28px;
-  bottom: 35px;
-  writing-mode: vertical-rl;
-  color: #887968;
-  letter-spacing: 3px;
-  font-size: 8px;
-  text-transform: uppercase;
-}
-
-/* -------------------------
-   MARQUEE
-------------------------- */
-
-.marquee {
-  background: var(--wine);
-  color: #f4e9dc;
-  overflow: hidden;
-  padding: 15px 0;
-  white-space: nowrap;
-}
-
-.marquee-track {
-  display: flex;
-  width: max-content;
-  animation: marquee 30s linear infinite;
-}
-
-.marquee-track span {
-  font-family: var(--serif);
-  font-size: 21px;
-  letter-spacing: 3px;
-  padding: 0 35px;
-}
-
-.marquee-track i {
-  font-style: normal;
-  color: #d4b98e;
-}
-
-@keyframes marquee {
-  to { transform: translateX(-50%); }
-}
-
-/* -------------------------
-   SECTION INTRO
-------------------------- */
-
-.section-intro {
-  text-align: center;
-  padding: 120px 20px 70px;
-}
-
-.section-intro .eyebrow {
-  margin-bottom: 18px;
-}
-
-.section-intro h2 {
-  font-family: var(--serif);
-  font-weight: 300;
-  font-size: clamp(49px, 6vw, 82px);
-  line-height: .95;
-}
-
-.section-intro h2 em {
-  color: var(--wine);
-  font-weight: 300;
-}
-
-.section-intro p {
-  color: var(--muted);
+.copy-description {
+  max-width: 310px;
+  color: #b6a79a;
   font-size: 11px;
-  line-height: 1.9;
-  max-width: 430px;
-  margin: 22px auto 0;
+  line-height: 2;
+  font-weight: 300;
+  margin-top: 32px;
 }
 
-/* -------------------------
-   SCROLL COLLECTION
-------------------------- */
-
-.collection {
-  --product-accent: #b99a6d;
-  --product-bg: #e8dfd2;
-
-  padding: 0 6% 110px;
-  background: var(--cream);
+.copy-line {
+  width: 55px;
+  height: 1px;
+  background: var(--gold);
+  margin: 27px 0 20px;
 }
 
-.collection-topline {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-top: 1px solid var(--line);
-  padding: 17px 0;
+.copy-bottom {
   color: var(--muted);
-  font-size: 8px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
+  font-family: var(--serif);
+  font-size: 17px;
+  font-style: italic;
 }
 
-.collection-layout {
-  display: grid;
-  grid-template-columns: 1.05fr .95fr;
-  gap: 8%;
-  align-items: start;
-}
+/* CENTER PRODUCT */
 
-/* Sticky image panel */
-
-.product-stage {
-  height: 78vh;
-  min-height: 540px;
-  max-height: 800px;
-  position: sticky;
-  top: 100px;
-  background: var(--product-bg);
-  overflow: hidden;
+.visual {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background .7s ease;
+  position: relative;
+  min-width: 0;
 }
 
-.product-stage::before {
+.visual::before {
   content: "";
   position: absolute;
-  width: 75%;
+  width: min(90%, 480px);
   aspect-ratio: 1;
   border-radius: 50%;
-  background: rgba(255,255,255,.38);
-  filter: blur(35px);
-  transition: .7s;
+  background: radial-gradient(circle, rgba(199,164,119,.21), rgba(199,164,119,0) 70%);
+  filter: blur(8px);
 }
 
-.stage-number {
-  position: absolute;
-  top: 25px;
-  left: 28px;
-  font-family: var(--serif);
-  font-size: 18px;
-  color: rgba(40,30,25,.48);
-  z-index: 4;
-}
-
-.stage-label {
-  position: absolute;
-  right: 25px;
-  top: 28px;
-  font-size: 8px;
-  letter-spacing: 3px;
-  color: rgba(40,30,25,.55);
-  text-transform: uppercase;
-  z-index: 4;
-}
-
-.stage-image {
-  width: 88%;
-  height: 88%;
-  max-height: 680px;
-  object-fit: contain;
-  position: relative;
-  z-index: 2;
-  filter: drop-shadow(0 25px 28px rgba(50,35,25,.15));
-  transition: opacity .5s ease, transform .7s ease;
-}
-
-.stage-image.switching {
-  opacity: 0;
-  transform: translateY(25px) scale(.95);
-}
-
-.stage-bottom {
-  position: absolute;
-  bottom: 24px;
-  left: 28px;
-  right: 28px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 4;
-  color: rgba(40,30,25,.62);
-  font-size: 8px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-}
-
-.stage-progress {
-  height: 2px;
-  width: 100%;
-  background: rgba(40,30,25,.13);
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  z-index: 5;
-}
-
-.stage-progress span {
-  height: 100%;
-  width: 20%;
-  display: block;
-  background: var(--wine);
-  transition: width .5s ease;
-}
-
-/* Scroll chapters */
-
-.product-chapters {
-  position: relative;
-}
-
-.scent-step {
-  min-height: 78vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 65px 0;
-  border-bottom: 1px solid var(--line);
-  opacity: .42;
-  transform: translateY(15px);
-  transition: opacity .6s ease, transform .6s ease;
-  scroll-margin-top: 100px;
-}
-
-.scent-step.active {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.step-index {
-  font-size: 9px;
-  letter-spacing: 3px;
-  color: var(--wine);
-  margin-bottom: 23px;
-}
-
-.scent-step h3 {
-  font-family: var(--serif);
-  font-size: clamp(65px, 8vw, 105px);
-  line-height: .82;
-  font-weight: 300;
-  letter-spacing: -2px;
-}
-
-.step-tagline {
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 24px;
-  color: var(--wine);
-  margin-top: 20px;
-}
-
-.step-description {
-  color: var(--muted);
-  font-size: 11px;
-  line-height: 2.1;
-  max-width: 340px;
-  margin-top: 22px;
-}
-
-.step-notes {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 27px;
-}
-
-.step-notes span {
-  border: 1px solid rgba(48,37,32,.2);
-  padding: 9px 13px;
-  color: #685b52;
-  font-size: 8px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
-
-.step-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 22px;
-  align-self: flex-start;
-  margin-top: 35px;
-  border-bottom: 1px solid var(--wine);
-  padding-bottom: 10px;
-  color: var(--wine);
-  font-size: 9px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  transition: gap .3s;
-}
-
-.step-link:hover {
-  gap: 34px;
-}
-
-/* -------------------------
-   PRODUCT QUICK NAV
-------------------------- */
-
-.product-nav {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  flex-wrap: wrap;
-  padding: 35px 0 0;
-}
-
-.product-nav button {
-  background: transparent;
-  border: 1px solid var(--line);
-  padding: 12px 17px;
-  font-size: 8px;
-  letter-spacing: 1.5px;
-  color: var(--muted);
-  cursor: pointer;
-  transition: .3s;
-}
-
-.product-nav button:hover,
-.product-nav button.active {
-  background: var(--wine);
-  border-color: var(--wine);
-  color: #fff8f0;
-}
-
-/* -------------------------
-   BRAND STORY
-------------------------- */
-
-.story {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  min-height: 570px;
-  background: #e6ddd1;
-}
-
-.story-visual {
-  position: relative;
-  min-height: 500px;
-  overflow: hidden;
-  background:
-    radial-gradient(circle at 50% 50%, #d1bda6, #e6ddd1 70%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.story-visual::before {
-  content: "P";
-  font-family: var(--serif);
-  font-size: 450px;
-  font-weight: 300;
-  color: rgba(255,255,255,.23);
-  position: absolute;
-}
-
-.story-visual img {
-  width: 65%;
-  height: 85%;
-  object-fit: contain;
-  position: relative;
-  z-index: 2;
-  filter: drop-shadow(0 25px 25px rgba(50,35,25,.16));
-}
-
-.story-copy {
-  padding: 90px 12%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.story-copy .eyebrow {
-  margin-bottom: 22px;
-}
-
-.story-copy h2 {
-  font-family: var(--serif);
-  font-size: clamp(52px, 6vw, 82px);
-  line-height: .9;
-  font-weight: 300;
-}
-
-.story-copy h2 em {
-  color: var(--wine);
-  font-weight: 300;
-}
-
-.story-copy p {
-  color: #74685f;
-  font-size: 11px;
-  line-height: 2.1;
-  margin-top: 25px;
-  max-width: 380px;
-}
-
-/* -------------------------
-   CLOSING BANNER
-------------------------- */
-
-.closing {
-  background: var(--wine);
-  color: #f3e9dd;
-  text-align: center;
-  padding: 105px 20px 110px;
-  position: relative;
-  overflow: hidden;
-}
-
-.closing::before,
-.closing::after {
+.visual::after {
   content: "PAR";
   position: absolute;
   font-family: var(--serif);
-  font-size: 220px;
+  font-size: clamp(160px, 22vw, 350px);
+  letter-spacing: 10px;
   color: rgba(255,255,255,.035);
-  top: 15px;
+  z-index: 0;
 }
 
-.closing::before { left: -45px; }
-.closing::after { right: -45px; }
+.product-image {
+  position: relative;
+  z-index: 1;
+  height: 94%;
+  width: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 24px 35px rgba(0,0,0,.36));
+  transition: opacity .4s ease, transform .6s ease;
+}
 
-.closing .eyebrow {
-  color: #d9bd94;
+.product-image.changing {
+  opacity: 0;
+  transform: translateY(15px) scale(.96);
+}
+
+.image-caption {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-size: 8px;
+  letter-spacing: 3px;
+  color: var(--gold);
+  text-transform: uppercase;
+  z-index: 2;
+}
+
+/* RIGHT PRODUCT INFORMATION */
+
+.details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding-left: 15px;
   position: relative;
   z-index: 2;
 }
 
-.closing h2 {
+.product-number {
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: var(--gold);
+  margin-bottom: 19px;
+}
+
+.product-name {
   font-family: var(--serif);
-  font-size: clamp(55px, 8vw, 105px);
+  font-size: clamp(48px, 5vw, 78px);
   line-height: .9;
   font-weight: 300;
-  position: relative;
-  z-index: 2;
+  color: var(--cream);
+  transition: opacity .3s;
 }
 
-.closing h2 em {
-  color: #d9bd94;
+.product-tagline {
+  color: var(--gold);
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 23px;
+  margin-top: 15px;
 }
 
-.closing p {
+.product-description {
+  max-width: 250px;
+  color: #b6a79a;
   font-size: 10px;
-  letter-spacing: 1px;
-  color: #e2d1c1;
-  margin-top: 22px;
-  position: relative;
-  z-index: 2;
+  line-height: 2;
+  margin-top: 23px;
+  min-height: 60px;
 }
 
-.closing a {
-  display: inline-block;
+.notes-label {
+  margin-top: 27px;
+  color: var(--gold);
+  font-size: 8px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.notes {
+  margin-top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  max-width: 250px;
+}
+
+.notes span {
+  padding: 8px 10px;
+  border: 1px solid rgba(197,167,124,.35);
+  color: #d0c1b1;
+  font-size: 8px;
+  letter-spacing: 1px;
+}
+
+.price-label {
   margin-top: 30px;
-  border: 1px solid #d9bd94;
-  padding: 15px 28px;
-  color: #f3e9dd;
+  color: var(--muted);
+  font-size: 8px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.price {
+  font-family: var(--serif);
+  font-size: 38px;
+  color: var(--gold);
+  margin-top: 4px;
+}
+
+.buy-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  margin-top: 19px;
+  padding: 15px 20px;
+  min-width: 185px;
+  background: var(--gold);
+  color: var(--dark);
+  border: 1px solid var(--gold);
+  cursor: pointer;
   font-size: 8px;
   letter-spacing: 2px;
   text-transform: uppercase;
   transition: .3s;
+}
+
+.buy-button:hover {
+  background: transparent;
+  color: var(--gold);
+}
+
+.buy-button span {
+  font-size: 16px;
+}
+
+/* DECORATIVE LABEL */
+
+.vertical-label {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  writing-mode: vertical-rl;
+  color: rgba(197,167,124,.5);
+  font-size: 8px;
+  letter-spacing: 4px;
+}
+
+/* BOTTOM COLLECTION BAR */
+
+.collection-bar {
+  height: 145px;
+  min-height: 145px;
+  padding: 13px 5% 15px;
+  border-top: 1px solid rgba(197,167,124,.22);
+  display: flex;
+  align-items: center;
+  gap: 20px;
   position: relative;
-  z-index: 2;
+  z-index: 5;
+  background: rgba(16,11,10,.25);
 }
 
-.closing a:hover {
-  background: #d9bd94;
-  color: var(--wine);
+.collection-title {
+  width: 125px;
+  flex-shrink: 0;
 }
 
-/* -------------------------
-   FOOTER
-------------------------- */
-
-.footer {
-  background: #241d1b;
-  color: #e9dfd2;
-  padding: 55px 6% 25px;
-}
-
-.footer-main {
-  display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr;
-  gap: 40px;
-  padding-bottom: 50px;
-}
-
-.footer-logo {
-  font-family: var(--serif);
-  font-size: 57px;
-  letter-spacing: 15px;
-}
-
-.footer-description {
-  color: #a99b8e;
-  font-size: 10px;
-  line-height: 2;
-  max-width: 260px;
-  margin-top: 12px;
-}
-
-.footer-column h4 {
-  color: #c9a979;
+.collection-title span {
+  display: block;
   font-size: 8px;
   letter-spacing: 3px;
+  color: var(--gold);
   text-transform: uppercase;
-  margin-bottom: 20px;
 }
 
-.footer-column a {
+.collection-title strong {
   display: block;
-  color: #c0b3a6;
-  font-size: 10px;
-  margin: 12px 0;
-  transition: color .3s;
+  font-family: var(--serif);
+  font-size: 24px;
+  font-weight: 300;
+  margin-top: 7px;
 }
 
-.footer-column a:hover {
-  color: white;
+.products {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+  height: 100%;
+  min-width: 0;
 }
 
-.footer-bottom {
-  border-top: 1px solid rgba(255,255,255,.13);
-  padding-top: 20px;
-  display: flex;
-  justify-content: space-between;
-  color: #8e8177;
-  font-size: 8px;
+.product-card {
+  display: grid;
+  grid-template-columns: 54px 1fr;
+  align-items: center;
+  gap: 9px;
+  min-width: 0;
+  padding: 7px 9px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--cream);
+  cursor: pointer;
+  text-align: left;
+  transition: .3s;
+}
+
+.product-card:hover,
+.product-card.active {
+  background: rgba(197,167,124,.09);
+  border-color: rgba(197,167,124,.55);
+}
+
+.product-card img {
+  width: 54px;
+  height: 105px;
+  object-fit: contain;
+  transition: transform .4s;
+}
+
+.product-card:hover img,
+.product-card.active img {
+  transform: translateY(-4px);
+}
+
+.card-info {
+  min-width: 0;
+}
+
+.card-info strong {
+  display: block;
+  font-family: var(--serif);
+  font-size: 19px;
+  font-weight: 400;
   letter-spacing: 1px;
 }
 
-/* -------------------------
-   REVEAL ANIMATION
-------------------------- */
-
-.reveal {
-  opacity: 0;
-  transform: translateY(25px);
-  transition: opacity .8s ease, transform .8s ease;
+.card-info small {
+  display: block;
+  color: var(--muted);
+  font-size: 7px;
+  letter-spacing: 1px;
+  margin-top: 5px;
+  text-transform: uppercase;
 }
 
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* -------------------------
-   MOBILE NAV
-------------------------- */
-
-.mobile-menu {
-  display: none;
-  position: absolute;
-  top: 82px;
-  left: 0;
-  width: 100%;
-  background: var(--cream);
-  padding: 20px 6% 25px;
-  border-bottom: 1px solid var(--line);
-  z-index: 99;
-}
-
-.mobile-menu.open {
-  display: flex;
-  flex-direction: column;
-  gap: 22px;
-}
-
-.mobile-menu a {
+.card-info .card-price {
+  display: block;
+  color: var(--gold);
   font-size: 10px;
+  margin-top: 9px;
+}
+
+/* FOOTER */
+
+.footer {
+  height: 34px;
+  min-height: 34px;
+  padding: 0 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #8e8176;
+  font-size: 7px;
   letter-spacing: 2px;
   text-transform: uppercase;
 }
 
-/* -------------------------
-   RESPONSIVE
-------------------------- */
+/* RESPONSIVE */
 
-@media (max-width: 900px) {
-  .header {
-    padding: 0 4%;
-  }
-
-  .nav-left,
-  .nav-right {
-    gap: 15px;
-  }
-
-  .hero-copy {
+@media (min-width: 1500px) {
+  .main {
     padding-left: 8%;
+    padding-right: 8%;
   }
 
-  .collection {
-    padding-left: 4%;
-    padding-right: 4%;
+  .collection-bar {
+    padding-left: 8%;
+    padding-right: 8%;
+  }
+}
+
+@media (max-width: 1000px) {
+  .main {
+    grid-template-columns: 34% 36% 30%;
+    padding: 0 3%;
   }
 
-  .collection-layout {
-    gap: 5%;
+  .copy h1 {
+    font-size: 8vw;
   }
 
-  .product-stage {
-    height: 70vh;
-    min-height: 470px;
+  .product-card {
+    grid-template-columns: 42px 1fr;
+    gap: 5px;
+    padding: 5px;
   }
 
-  .scent-step {
-    min-height: 70vh;
+  .product-card img {
+    width: 42px;
   }
 
-  .story-copy {
-    padding: 70px 9%;
+  .collection-title {
+    width: 95px;
+  }
+
+  .collection-bar {
+    gap: 10px;
   }
 }
 
 @media (max-width: 650px) {
-  html {
-    scroll-padding-top: 70px;
+  .page {
+    min-height: 0;
   }
 
-  .announcement {
-    height: 25px;
-    font-size: 7px;
-    letter-spacing: 2px;
-  }
-
-  .header {
-    height: 66px;
-    grid-template-columns: 1fr auto 1fr;
+  .topbar {
+    height: 52px;
+    min-height: 52px;
     padding: 0 5%;
   }
 
-  .nav-left,
-  .nav-right {
-    display: none;
-  }
-
-  .menu-toggle {
-    display: block;
-    justify-self: start;
-  }
-
   .logo {
-    font-size: 36px;
-    letter-spacing: 9px;
+    font-size: 31px;
+    letter-spacing: 8px;
   }
 
-  .mobile-menu {
-    top: 66px;
+  .top-center {
+    font-size: 6px;
+    letter-spacing: 1.5px;
   }
 
-  .hero {
-    height: auto;
-    min-height: 0;
-    max-height: none;
-    grid-template-columns: 1fr;
+  .top-right {
+    font-size: 6px;
+    letter-spacing: 1px;
   }
 
-  .hero-copy {
-    padding: 70px 8% 35px;
+  .main {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 24% 46% 30%;
+    padding: 0 5%;
+    flex: 1;
+  }
+
+  .copy {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    padding: 10px 0 0;
+    justify-content: center;
     align-items: center;
     text-align: center;
   }
 
-  .hero .eyebrow {
-    margin-bottom: 22px;
+  .eyebrow {
+    font-size: 7px;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
   }
 
-  .hero h1 {
-    font-size: clamp(75px, 19vw, 112px);
-    letter-spacing: -3px;
+  .copy h1 {
+    font-size: clamp(42px, 12vw, 67px);
+    line-height: .75;
+    letter-spacing: -2px;
   }
 
-  .hero h1 span {
-    margin-left: 20px;
+  .copy h1 em {
+    display: inline;
+    margin-left: 9px;
   }
 
-  .hero-description {
-    font-size: 10px;
-    margin-top: 22px;
-  }
-
-  .hero-copy .primary-button {
-    margin-top: 23px;
-  }
-
-  .hero-caption {
+  .copy-description,
+  .copy-line,
+  .copy-bottom {
     display: none;
   }
 
-  .hero-visual {
-    height: 390px;
+  .visual {
+    grid-column: 1;
+    grid-row: 2 / 4;
+    min-height: 0;
   }
 
-  .hero-image {
-    width: 75%;
-    height: 100%;
+  .product-image {
+    height: 94%;
+    width: 100%;
   }
 
-  .hero-side-note {
-    right: 12px;
-    bottom: 15px;
-    font-size: 6px;
+  .visual::after {
+    font-size: 125px;
   }
 
-  .marquee {
-    padding: 12px 0;
-  }
-
-  .marquee-track span {
-    font-size: 17px;
-    padding: 0 22px;
-  }
-
-  .section-intro {
-    padding: 80px 8% 45px;
-  }
-
-  .section-intro h2 {
-    font-size: 58px;
-  }
-
-  .collection {
-    padding: 0 5% 75px;
-  }
-
-  .collection-topline {
+  .image-caption {
+    bottom: 8px;
     font-size: 6px;
     letter-spacing: 1px;
   }
 
-  .collection-layout {
+  .details {
+    grid-column: 2;
+    grid-row: 2 / 4;
+    padding: 8px 0 8px 8px;
+    justify-content: center;
+  }
+
+  .product-number {
+    font-size: 7px;
+    margin-bottom: 12px;
+  }
+
+  .product-name {
+    font-size: clamp(37px, 10vw, 60px);
+  }
+
+  .product-tagline {
+    font-size: 17px;
+    margin-top: 9px;
+  }
+
+  .product-description {
+    font-size: 8px;
+    line-height: 1.7;
+    margin-top: 12px;
+    min-height: 0;
+  }
+
+  .notes-label {
+    margin-top: 14px;
+    font-size: 6px;
+    letter-spacing: 1.5px;
+  }
+
+  .notes {
+    gap: 4px;
+    margin-top: 7px;
+  }
+
+  .notes span {
+    padding: 5px 6px;
+    font-size: 6px;
+  }
+
+  .price-label {
+    margin-top: 15px;
+    font-size: 6px;
+    letter-spacing: 1.5px;
+  }
+
+  .price {
+    font-size: 30px;
+  }
+
+  .buy-button {
+    min-width: 0;
+    width: 100%;
+    padding: 11px 9px;
+    gap: 5px;
+    font-size: 6px;
+    margin-top: 10px;
+  }
+
+  .buy-button span {
+    font-size: 12px;
+  }
+
+  .vertical-label {
+    display: none;
+  }
+
+  .collection-bar {
+    height: 112px;
+    min-height: 112px;
+    padding: 8px 3%;
+    gap: 5px;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+  }
+
+  .collection-title {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .collection-title span {
+    font-size: 6px;
+    letter-spacing: 1.5px;
+  }
+
+  .collection-title strong {
+    font-size: 15px;
+    margin: 0;
+  }
+
+  .products {
+    flex: 1;
+    gap: 4px;
+    min-height: 0;
+  }
+
+  .product-card {
     display: flex;
     flex-direction: column;
-    gap: 0;
-  }
-
-  .product-stage {
-    position: sticky;
-    top: 66px;
-    width: 100%;
-    height: 43svh;
-    min-height: 280px;
-    max-height: 390px;
-    z-index: 10;
-    flex-shrink: 0;
-  }
-
-  .stage-image {
-    width: 75%;
-    height: 88%;
-  }
-
-  .stage-number {
-    top: 13px;
-    left: 14px;
-    font-size: 15px;
-  }
-
-  .stage-label {
-    top: 16px;
-    right: 14px;
-    font-size: 6px;
-    letter-spacing: 1px;
-  }
-
-  .stage-bottom {
-    bottom: 13px;
-    left: 14px;
-    right: 14px;
-    font-size: 6px;
-    letter-spacing: 1px;
-  }
-
-  .scent-step {
-    min-height: 70svh;
-    padding: 65px 5px;
     justify-content: center;
-    scroll-margin-top: 43svh;
+    align-items: center;
+    padding: 3px 1px;
+    gap: 2px;
   }
 
-  .step-index {
-    margin-bottom: 18px;
+  .product-card img {
+    width: 100%;
+    height: 51px;
   }
 
-  .scent-step h3 {
-    font-size: clamp(69px, 19vw, 95px);
+  .card-info {
+    text-align: center;
   }
 
-  .step-tagline {
-    font-size: 21px;
+  .card-info strong {
+    font-size: 12px;
   }
 
-  .step-description {
-    font-size: 10px;
-    max-width: 330px;
+  .card-info small {
+    display: none;
   }
 
-  .step-notes span {
-    padding: 8px 10px;
+  .card-info .card-price {
     font-size: 7px;
-  }
-
-  .product-nav {
-    gap: 6px;
-    padding-top: 20px;
-  }
-
-  .product-nav button {
-    padding: 10px 11px;
-    font-size: 7px;
-  }
-
-  .story {
-    grid-template-columns: 1fr;
-  }
-
-  .story-visual {
-    min-height: 390px;
-    height: 390px;
-  }
-
-  .story-visual img {
-    width: 68%;
-  }
-
-  .story-copy {
-    padding: 70px 9% 80px;
-  }
-
-  .story-copy h2 {
-    font-size: 65px;
-  }
-
-  .closing {
-    padding: 80px 18px;
-  }
-
-  .closing h2 {
-    font-size: 65px;
-  }
-
-  .closing::before,
-  .closing::after {
-    font-size: 120px;
+    margin-top: 3px;
   }
 
   .footer {
-    padding: 45px 7% 22px;
-  }
-
-  .footer-main {
-    grid-template-columns: 1fr 1fr;
-    gap: 30px 20px;
-  }
-
-  .footer-brand {
-    grid-column: 1 / -1;
-  }
-
-  .footer-logo {
-    font-size: 48px;
-  }
-
-  .footer-bottom {
-    gap: 15px;
-    flex-wrap: wrap;
-    font-size: 7px;
+    height: 24px;
+    min-height: 24px;
+    padding: 0 3%;
+    font-size: 5px;
+    letter-spacing: .8px;
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    scroll-behavior: auto !important;
-    animation-duration: .01ms !important;
-    transition-duration: .01ms !important;
+@media (max-height: 650px) and (min-width: 651px) {
+  .topbar {
+    height: 57px;
+    min-height: 57px;
+  }
+
+  .collection-bar {
+    height: 115px;
+    min-height: 115px;
+  }
+
+  .footer {
+    height: 25px;
+    min-height: 25px;
+  }
+
+  .copy h1 {
+    font-size: clamp(60px, 7vw, 100px);
+  }
+
+  .product-image {
+    height: 88%;
+  }
+
+  .product-description {
+    margin-top: 13px;
+  }
+
+  .notes-label {
+    margin-top: 16px;
+  }
+
+  .price-label {
+    margin-top: 18px;
   }
 }
 </style>
@@ -1138,688 +780,359 @@ button {
 
 <body>
 
-<!-- ANNOUNCEMENT -->
-<div class="announcement">
-  Discover the signature collection · PAR PARFUM
-</div>
+<div class="page">
 
-<!-- HEADER -->
-<header class="header">
+  <!-- HEADER -->
+  <header class="topbar">
+    <div class="logo">PAR</div>
 
-  <nav class="nav-left">
-    <a class="nav-link" href="#home">Home</a>
-    <a class="nav-link" href="#collection">Collection</a>
-  </nav>
-
-  <a href="#home" class="logo">PAR</a>
-
-  <nav class="nav-right">
-    <a class="nav-link" href="#story">Our story</a>
-    <a class="nav-link" href="#contact">Contact</a>
-  </nav>
-
-  <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
-    ☰
-  </button>
-
-</header>
-
-<nav class="mobile-menu" id="mobileMenu">
-  <a href="#home">Home</a>
-  <a href="#collection">Collection</a>
-  <a href="#story">Our story</a>
-  <a href="#contact">Contact</a>
-</nav>
-
-<!-- HERO -->
-<section class="hero" id="home">
-
-  <div class="hero-copy">
-
-    <div class="eyebrow">A new expression of fragrance</div>
-
-    <h1>
-      SCENT<br>
-      <span>of self.</span>
-    </h1>
-
-    <p class="hero-description">
-      More than a fragrance. An expression of identity,
-      emotion and individuality. Discover the world
-      of PAR PARFUM.
-    </p>
-
-    <a href="#collection" class="primary-button">
-      Explore collection <span>↗</span>
-    </a>
-
-    <div class="hero-caption">
-      Five signatures · Endless impressions
+    <div class="top-center">
+      The art of fragrance
     </div>
 
-  </div>
-
-  <div class="hero-visual">
-
-    <img
-      class="hero-image"
-      src="images/eclat.png"
-      alt="PAR ÉCLAT perfume"
-    >
-
-    <div class="hero-side-note">
-      The signature collection
+    <div class="top-right">
+      Five signature scents
     </div>
+  </header>
 
-  </div>
+  <!-- MAIN ADVERTISEMENT -->
+  <main class="main">
 
-</section>
+    <!-- LEFT -->
+    <section class="copy">
 
-<!-- MARQUEE -->
-<div class="marquee">
-  <div class="marquee-track">
-    <span>PAR PARFUM <i>✳</i> A SCENT OF YOUR OWN <i>✳</i> THE ART OF FRAGRANCE <i>✳</i></span>
-    <span>PAR PARFUM <i>✳</i> A SCENT OF YOUR OWN <i>✳</i> THE ART OF FRAGRANCE <i>✳</i></span>
-  </div>
-</div>
+      <div class="eyebrow">
+        Discover your signature
+      </div>
 
-<!-- COLLECTION INTRO -->
-<section class="section-intro reveal">
+      <h1>
+        SCENT
+        <em>of self.</em>
+      </h1>
 
-  <div class="eyebrow">The signature collection</div>
+      <p class="copy-description">
+        A fragrance is more than a scent.
+        It is your presence, your memory,
+        your story. Find the one that feels
+        unmistakably yours.
+      </p>
 
-  <h2>
-    Find your<br>
-    <em>fragrance.</em>
-  </h2>
+      <div class="copy-line"></div>
 
-  <p>
-    Five distinct compositions. Five different moods.
-    Discover the fragrance that feels like you.
-  </p>
+      <div class="copy-bottom">
+        Five fragrances. One identity.
+      </div>
 
-</section>
+    </section>
 
-<!-- SCROLL COLLECTION -->
-<section class="collection" id="collection">
-
-  <div class="collection-topline">
-    <span>PAR · The collection</span>
-    <span>Scroll to discover ↓</span>
-  </div>
-
-  <div class="collection-layout">
-
-    <!-- STICKY PRODUCT IMAGE -->
-    <div class="product-stage" id="productStage">
-
-      <div class="stage-number" id="stageNumber">01 / 05</div>
-
-      <div class="stage-label">PAR PARFUM</div>
+    <!-- CENTER -->
+    <section class="visual">
 
       <img
-        class="stage-image"
-        id="stageImage"
+        id="mainImage"
+        class="product-image"
         src="images/eclat.png"
-        alt="PAR ÉCLAT fragrance"
+        alt="PAR ÉCLAT perfume"
       >
 
-      <div class="stage-bottom">
-        <span id="stageName">ÉCLAT</span>
-        <span>Signature fragrance</span>
+      <div class="image-caption">
+        PAR PARFUM · SIGNATURE COLLECTION
       </div>
 
-      <div class="stage-progress">
-        <span id="stageProgress"></span>
+    </section>
+
+    <!-- RIGHT -->
+    <section class="details">
+
+      <div class="product-number" id="productNumber">
+        01 / 05
       </div>
 
-    </div>
+      <h2 class="product-name" id="productName">
+        ÉCLAT
+      </h2>
 
-    <!-- SCROLLING PRODUCT CONTENT -->
-    <div class="product-chapters">
+      <div class="product-tagline" id="productTagline">
+        A touch of light.
+      </div>
 
-      <article
-        class="scent-step active"
-        id="scent-eclat"
-        data-index="0"
-      >
-        <div class="step-index">01 — THE RADIANT ONE</div>
-
-        <h3>ÉCLAT</h3>
-
-        <div class="step-tagline">
-          A touch of light.
-        </div>
-
-        <p class="step-description">
-          Bright, effortless and captivating.
-          A luminous fragrance inspired by the beauty
-          of a new beginning. A delicate balance of
-          freshness and elegance.
-        </p>
-
-        <div class="step-notes">
-          <span>Citrus</span>
-          <span>Jasmine</span>
-          <span>White musk</span>
-        </div>
-
-        <a href="#contact" class="step-link">
-          Discover ÉCLAT <span>↗</span>
-        </a>
-      </article>
-
-      <article
-        class="scent-step"
-        id="scent-velvet"
-        data-index="1"
-      >
-        <div class="step-index">02 — THE ROMANTIC ONE</div>
-
-        <h3>VELVET</h3>
-
-        <div class="step-tagline">
-          Feel the softness.
-        </div>
-
-        <p class="step-description">
-          An intimate floral embrace. Delicate petals
-          meet sensual warmth in a fragrance that feels
-          like silk. Elegant, soft and quietly unforgettable.
-        </p>
-
-        <div class="step-notes">
-          <span>Rose</span>
-          <span>Peony</span>
-          <span>Sandalwood</span>
-        </div>
-
-        <a href="#contact" class="step-link">
-          Discover VELVET <span>↗</span>
-        </a>
-      </article>
-
-      <article
-        class="scent-step"
-        id="scent-noir"
-        data-index="2"
-      >
-        <div class="step-index">03 — THE MYSTERIOUS ONE</div>
-
-        <h3>NOIR</h3>
-
-        <div class="step-tagline">
-          Own the mystery.
-        </div>
-
-        <p class="step-description">
-          Bold, magnetic and unforgettable.
-          A deep composition with a distinctive character,
-          created for those who leave an impression.
-        </p>
-
-        <div class="step-notes">
-          <span>Oud</span>
-          <span>Amber</span>
-          <span>Black pepper</span>
-        </div>
-
-        <a href="#contact" class="step-link">
-          Discover NOIR <span>↗</span>
-        </a>
-      </article>
-
-      <article
-        class="scent-step"
-        id="scent-amour"
-        data-index="3"
-      >
-        <div class="step-index">04 — THE EMOTIONAL ONE</div>
-
-        <h3>AMOUR</h3>
-
-        <div class="step-tagline">
-          Made of emotion.
-        </div>
-
-        <p class="step-description">
-          A romantic expression of warmth and desire.
-          An elegant fragrance that lingers like
-          a beautiful memory.
-        </p>
-
-        <div class="step-notes">
-          <span>Rose</span>
-          <span>Vanilla</span>
-          <span>Pink pepper</span>
-        </div>
-
-        <a href="#contact" class="step-link">
-          Discover AMOUR <span>↗</span>
-        </a>
-      </article>
-
-      <article
-        class="scent-step"
-        id="scent-essence"
-        data-index="4"
-      >
-        <div class="step-index">05 — THE TIMELESS ONE</div>
-
-        <h3>ESSENCE</h3>
-
-        <div class="step-tagline">
-          Pure by nature.
-        </div>
-
-        <p class="step-description">
-          Understated, harmonious and timeless.
-          A refined blend inspired by nature,
-          simplicity and quiet luxury.
-        </p>
-
-        <div class="step-notes">
-          <span>Green tea</span>
-          <span>Cedar</span>
-          <span>White flowers</span>
-        </div>
-
-        <a href="#contact" class="step-link">
-          Discover ESSENCE <span>↗</span>
-        </a>
-      </article>
-
-    </div>
-
-  </div>
-
-  <!-- CLICKABLE FRAGRANCE NAVIGATION -->
-  <div class="product-nav">
-    <button class="active" data-go="0">01 ÉCLAT</button>
-    <button data-go="1">02 VELVET</button>
-    <button data-go="2">03 NOIR</button>
-    <button data-go="3">04 AMOUR</button>
-    <button data-go="4">05 ESSENCE</button>
-  </div>
-
-</section>
-
-<!-- BRAND STORY -->
-<section class="story" id="story">
-
-  <div class="story-visual">
-    <img
-      src="images/essence.png"
-      alt="PAR ESSENCE perfume"
-      loading="lazy"
-    >
-  </div>
-
-  <div class="story-copy reveal">
-
-    <div class="eyebrow">The philosophy of PAR</div>
-
-    <h2>
-      A scent.<br>
-      <em>A feeling.</em><br>
-      An identity.
-    </h2>
-
-    <p>
-      At PAR PARFUM, fragrance is more than an accessory.
-      It is a personal signature — an invisible expression
-      of who you are and how you want to be remembered.
-    </p>
-
-    <p>
-      Every composition tells a different story.
-      Find the one that becomes yours.
-    </p>
-
-    <a href="#collection" class="step-link">
-      Explore our fragrances <span>↗</span>
-    </a>
-
-  </div>
-
-</section>
-
-<!-- CLOSING -->
-<section class="closing" id="contact">
-
-  <div class="eyebrow">Your signature awaits</div>
-
-  <h2>
-    Leave a<br>
-    <em>lasting impression.</em>
-  </h2>
-
-  <p>
-    Discover the fragrance that speaks without words.
-  </p>
-
-  <a href="#collection">
-    Explore the collection
-  </a>
-
-</section>
-
-<!-- FOOTER -->
-<footer class="footer">
-
-  <div class="footer-main">
-
-    <div class="footer-brand">
-      <div class="footer-logo">PAR</div>
-
-      <p class="footer-description">
-        A personal expression of fragrance.
-        Five signatures, one identity.
+      <p class="product-description" id="productDescription">
+        Bright, luminous and effortlessly elegant.
+        A fragrance inspired by light and freshness.
       </p>
+
+      <div class="notes-label">
+        Fragrance notes
+      </div>
+
+      <div class="notes" id="productNotes">
+        <span>Citrus</span>
+        <span>Jasmine</span>
+        <span>White musk</span>
+      </div>
+
+      <div class="price-label">
+        Price
+      </div>
+
+      <div class="price" id="productPrice">
+        ֏ XX,XXX
+      </div>
+
+      <button class="buy-button" id="buyButton">
+        Discover fragrance <span>↗</span>
+      </button>
+
+    </section>
+
+    <div class="vertical-label">
+      PAR PARFUM · EST. 2026
     </div>
 
-    <div class="footer-column">
-      <h4>Explore</h4>
-      <a href="#home">Home</a>
-      <a href="#collection">Collection</a>
-      <a href="#story">Our story</a>
+  </main>
+
+  <!-- FIVE PRODUCTS -->
+  <section class="collection-bar">
+
+    <div class="collection-title">
+      <span>Explore the collection</span>
+      <strong>Five signatures</strong>
     </div>
 
-    <div class="footer-column">
-      <h4>Fragrances</h4>
-      <a href="#scent-eclat">ÉCLAT</a>
-      <a href="#scent-velvet">VELVET</a>
-      <a href="#scent-noir">NOIR</a>
-      <a href="#scent-amour">AMOUR</a>
-      <a href="#scent-essence">ESSENCE</a>
+    <div class="products">
+
+      <button class="product-card active" data-product="0">
+        <img src="images/eclat.png" alt="ÉCLAT" loading="eager">
+        <div class="card-info">
+          <strong>ÉCLAT</strong>
+          <small>Radiant</small>
+          <span class="card-price">֏ XX,XXX</span>
+        </div>
+      </button>
+
+      <button class="product-card" data-product="1">
+        <img src="images/velvet.png" alt="VELVET" loading="eager">
+        <div class="card-info">
+          <strong>VELVET</strong>
+          <small>Floral</small>
+          <span class="card-price">֏ XX,XXX</span>
+        </div>
+      </button>
+
+      <button class="product-card" data-product="2">
+        <img src="images/noir.png" alt="NOIR" loading="eager">
+        <div class="card-info">
+          <strong>NOIR</strong>
+          <small>Intense</small>
+          <span class="card-price">֏ XX,XXX</span>
+        </div>
+      </button>
+
+      <button class="product-card" data-product="3">
+        <img src="images/amour.png" alt="AMOUR" loading="eager">
+        <div class="card-info">
+          <strong>AMOUR</strong>
+          <small>Romantic</small>
+          <span class="card-price">֏ XX,XXX</span>
+        </div>
+      </button>
+
+      <button class="product-card" data-product="4">
+        <img src="images/essence.png" alt="ESSENCE" loading="eager">
+        <div class="card-info">
+          <strong>ESSENCE</strong>
+          <small>Timeless</small>
+          <span class="card-price">֏ XX,XXX</span>
+        </div>
+      </button>
+
     </div>
 
-  </div>
+  </section>
 
-  <div class="footer-bottom">
+  <!-- FOOTER -->
+  <footer class="footer">
     <span>© 2026 PAR PARFUM</span>
-    <span>Crafted to be remembered</span>
-    <span>The art of fragrance</span>
-  </div>
+    <span>Made to be remembered</span>
+    <span>Discover your identity</span>
+  </footer>
 
-</footer>
+</div>
 
 <script>
 
-/* --------------------------------
-   PAR PARFUM — PRODUCT DATA
--------------------------------- */
+/* =====================================
+   EDIT YOUR PRICES HERE
+===================================== */
 
 const products = [
 
   {
     name: "ÉCLAT",
     image: "images/eclat.png",
-    background: "#e8dfd2",
-    accent: "#b69a70"
+    tagline: "A touch of light.",
+    description: "Bright, luminous and effortlessly elegant. A fragrance inspired by light, freshness and new beginnings.",
+    notes: ["Citrus", "Jasmine", "White musk"],
+    price: "֏ XX,XXX",
+    category: "Radiant"
   },
 
   {
     name: "VELVET",
     image: "images/velvet.png",
-    background: "#e6d8d4",
-    accent: "#8a4c50"
+    tagline: "Feel the softness.",
+    description: "A sensual floral expression. Soft rose petals and warm woods create an intimate, unforgettable impression.",
+    notes: ["Rose", "Peony", "Sandalwood"],
+    price: "֏ XX,XXX",
+    category: "Floral"
   },
 
   {
     name: "NOIR",
     image: "images/noir.png",
-    background: "#d9d5d0",
-    accent: "#40332e"
+    tagline: "Own the mystery.",
+    description: "Deep, bold and magnetic. A distinctive fragrance for those who appreciate intensity and character.",
+    notes: ["Oud", "Amber", "Black pepper"],
+    price: "֏ XX,XXX",
+    category: "Intense"
   },
 
   {
     name: "AMOUR",
     image: "images/amour.png",
-    background: "#eedbd5",
-    accent: "#bd7f79"
+    tagline: "Made of emotion.",
+    description: "Romantic, delicate and captivating. A beautiful composition that feels like a memory worth keeping.",
+    notes: ["Rose", "Vanilla", "Pink pepper"],
+    price: "֏ XX,XXX",
+    category: "Romantic"
   },
 
   {
     name: "ESSENCE",
     image: "images/essence.png",
-    background: "#dce0d2",
-    accent: "#778268"
+    tagline: "Pure by nature.",
+    description: "A harmonious, timeless expression inspired by nature, quiet elegance and understated beauty.",
+    notes: ["Green tea", "Cedar", "White flowers"],
+    price: "֏ XX,XXX",
+    category: "Timeless"
   }
 
 ];
 
 
-/* --------------------------------
-   ELEMENTS
--------------------------------- */
+/* =====================================
+   PRODUCT SELECTION
+===================================== */
 
-const stage = document.getElementById("productStage");
-const stageImage = document.getElementById("stageImage");
-const stageName = document.getElementById("stageName");
-const stageNumber = document.getElementById("stageNumber");
-const stageProgress = document.getElementById("stageProgress");
+const mainImage = document.getElementById("mainImage");
+const productName = document.getElementById("productName");
+const productNumber = document.getElementById("productNumber");
+const productTagline = document.getElementById("productTagline");
+const productDescription = document.getElementById("productDescription");
+const productNotes = document.getElementById("productNotes");
+const productPrice = document.getElementById("productPrice");
+const cards = document.querySelectorAll(".product-card");
+const buyButton = document.getElementById("buyButton");
 
-const steps = document.querySelectorAll(".scent-step");
-const navButtons = document.querySelectorAll(".product-nav button");
+let selectedProduct = 0;
 
-let currentProduct = 0;
-
-
-/* --------------------------------
-   CHANGE FEATURED PRODUCT
--------------------------------- */
-
-function changeProduct(index) {
+function selectProduct(index) {
 
   if (index < 0 || index >= products.length) return;
 
-  if (index === currentProduct && stageImage.src) {
-    updateActiveStates(index);
-    return;
-  }
-
-  currentProduct = index;
+  selectedProduct = index;
 
   const product = products[index];
 
-  stageImage.classList.add("switching");
+  mainImage.classList.add("changing");
 
-  const nextImage = new Image();
+  const imageLoader = new Image();
 
-  nextImage.onload = function() {
+  imageLoader.onload = () => {
 
-    stageImage.src = product.image;
-    stageImage.alt = "PAR " + product.name + " perfume";
+    mainImage.src = product.image;
+    mainImage.alt = "PAR " + product.name + " perfume";
 
-    stage.style.setProperty(
-      "--product-bg",
-      product.background
-    );
-
-    stage.style.setProperty(
-      "--product-accent",
-      product.accent
-    );
-
-    stageName.textContent = product.name;
-
-    stageNumber.textContent =
+    productName.textContent = product.name;
+    productNumber.textContent =
       String(index + 1).padStart(2, "0") + " / 05";
 
-    stageProgress.style.width =
-      ((index + 1) / products.length * 100) + "%";
+    productTagline.textContent = product.tagline;
+    productDescription.textContent = product.description;
+    productPrice.textContent = product.price;
+
+    productNotes.innerHTML = "";
+
+    product.notes.forEach(note => {
+
+      const span = document.createElement("span");
+      span.textContent = note;
+      productNotes.appendChild(span);
+
+    });
+
+    cards.forEach((card, i) => {
+      card.classList.toggle("active", i === index);
+    });
 
     requestAnimationFrame(() => {
-      stageImage.classList.remove("switching");
+      mainImage.classList.remove("changing");
     });
 
   };
 
-  nextImage.onerror = function() {
-
-    console.error("Image could not be loaded:", product.image);
-
-    stageImage.classList.remove("switching");
-
+  imageLoader.onerror = () => {
+    mainImage.classList.remove("changing");
+    console.error("Could not load image:", product.image);
   };
 
-  nextImage.src = product.image;
-
-  updateActiveStates(index);
+  imageLoader.src = product.image;
 
 }
 
 
-/* --------------------------------
-   ACTIVE SCROLL STATES
--------------------------------- */
+/* =====================================
+   CLICKABLE PRODUCT CARDS
+===================================== */
 
-function updateActiveStates(index) {
+cards.forEach(card => {
 
-  steps.forEach((step, i) => {
-    step.classList.toggle("active", i === index);
-  });
+  card.addEventListener("click", () => {
 
-  navButtons.forEach((button, i) => {
-    button.classList.toggle("active", i === index);
-  });
+    const index = Number(card.dataset.product);
 
-}
-
-
-/* --------------------------------
-   SCROLL DETECTION
-   Product changes when each chapter
-   enters the center of the screen.
--------------------------------- */
-
-const productObserver = new IntersectionObserver(
-
-  (entries) => {
-
-    entries.forEach((entry) => {
-
-      if (entry.isIntersecting) {
-
-        const index = Number(entry.target.dataset.index);
-
-        changeProduct(index);
-
-      }
-
-    });
-
-  },
-
-  {
-    root: null,
-    rootMargin: "-42% 0px -42% 0px",
-    threshold: 0
-  }
-
-);
-
-steps.forEach((step) => {
-  productObserver.observe(step);
-});
-
-
-/* --------------------------------
-   CLICK PRODUCT NAVIGATION
--------------------------------- */
-
-navButtons.forEach((button) => {
-
-  button.addEventListener("click", () => {
-
-    const index = Number(button.dataset.go);
-
-    const target = steps[index];
-
-    if (target) {
-      target.scrollIntoView({
-        behavior: "smooth",
-        block: "center"
-      });
-    }
+    selectProduct(index);
 
   });
 
 });
 
 
-/* --------------------------------
-   MOBILE MENU
--------------------------------- */
+/* =====================================
+   INITIAL PRODUCT
+===================================== */
 
-const menuToggle = document.getElementById("menuToggle");
-const mobileMenu = document.getElementById("mobileMenu");
+selectProduct(0);
 
-menuToggle.addEventListener("click", () => {
 
-  const open = mobileMenu.classList.toggle("open");
+/* =====================================
+   PURCHASE BUTTON
+===================================== */
 
-  menuToggle.textContent = open ? "×" : "☰";
+buyButton.addEventListener("click", () => {
 
-  menuToggle.setAttribute(
-    "aria-expanded",
-    open ? "true" : "false"
+  const product = products[selectedProduct];
+
+  // Replace this with your real contact or
+  // product purchase URL when available.
+
+  alert(
+    "You selected PAR " + product.name +
+    "\nPrice: " + product.price +
+    "\n\nContact PAR PARFUM to order."
   );
 
 });
-
-mobileMenu.querySelectorAll("a").forEach((link) => {
-
-  link.addEventListener("click", () => {
-
-    mobileMenu.classList.remove("open");
-    menuToggle.textContent = "☰";
-    menuToggle.setAttribute("aria-expanded", "false");
-
-  });
-
-});
-
-
-/* --------------------------------
-   REVEAL ANIMATIONS
--------------------------------- */
-
-const revealObserver = new IntersectionObserver(
-
-  (entries) => {
-
-    entries.forEach((entry) => {
-
-      if (entry.isIntersecting) {
-
-        entry.target.classList.add("visible");
-
-        revealObserver.unobserve(entry.target);
-
-      }
-
-    });
-
-  },
-
-  {
-    threshold: 0.12
-  }
-
-);
-
-document.querySelectorAll(".reveal").forEach((element) => {
-  revealObserver.observe(element);
-});
-
-
-/* --------------------------------
-   INITIALIZE
--------------------------------- */
-
-changeProduct(0);
 
 </script>
 

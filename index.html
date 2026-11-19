@@ -30,14 +30,13 @@ body {
 }
 
 .par-poster {
-  --accent: #c5a36c;
-  --glow: rgba(205,161,92,.22);
-  --mood: #29231a;
+  --accent: #e0bd7d;
+  --glow: rgba(204,157,82,.30);
+  --mood: #302719;
 
   width: 100%;
   height: 100vh;
   height: 100svh;
-  min-height: 0;
   padding: 22px 5.5% 17px;
   display: flex;
   flex-direction: column;
@@ -118,7 +117,7 @@ body {
   flex-shrink: 0;
 }
 
-/* MAIN LAYOUT */
+/* MAIN */
 
 .par-main {
   flex: 1;
@@ -161,7 +160,6 @@ body {
   font-weight: 300;
   color: var(--accent);
   font-style: normal;
-  transition: color .7s;
 }
 
 .par-description {
@@ -266,8 +264,6 @@ body {
   transform: scaleY(.38) rotate(30deg);
 }
 
-/* REAL PHOTOGRAPHIC IMAGE */
-
 .par-image-wrap {
   width: 100%;
   height: 100%;
@@ -311,7 +307,6 @@ body {
   font-weight: 300;
   color: var(--accent);
   line-height: 1;
-  transition: color .8s;
 }
 
 .par-number-label {
@@ -442,7 +437,7 @@ body {
   color: var(--accent);
 }
 
-/* ANIMATIONS */
+/* ANIMATION */
 
 @keyframes imageFloat {
   0%, 100% { transform: translateY(0); }
@@ -670,8 +665,6 @@ body {
 
   <main class="par-main">
 
-    <!-- LEFT INFORMATION -->
-
     <section class="par-left">
 
       <div class="par-overline" id="overline">
@@ -699,8 +692,6 @@ body {
 
     </section>
 
-    <!-- CENTER IMAGE -->
-
     <section class="par-center">
 
       <div class="par-halo"></div>
@@ -711,14 +702,12 @@ body {
         <img
           class="par-image"
           id="fragranceImage"
-          src="images/Untitled%20design.png"
+          src="images/eclat.png"
           alt="PAR ÉCLAT fragrance"
         >
       </div>
 
     </section>
-
-    <!-- RIGHT INFORMATION -->
 
     <section class="par-right">
 
@@ -735,8 +724,6 @@ body {
     </section>
 
   </main>
-
-  <!-- FIVE FRAGRANCES -->
 
   <section class="par-bottom" id="collection">
 
@@ -790,17 +777,14 @@ body {
 
 <script>
 
-/* ==================================================
-   PAR PARFUM — FIVE FRAGRANCES
-   Images are loaded from the GitHub images folder.
-   ================================================== */
+/* PAR PARFUM — IMAGE PATHS UPDATED */
 
 const fragrances = [
 
   {
     name: "ÉCLAT",
     number: "01",
-    image: "images/Untitled%20design.png",
+    image: "images/eclat.png",
     heading: "A TOUCH<br><em>OF LIGHT.</em>",
     description: "Bright, effortless and captivating. A luminous fragrance inspired by the beauty of a new beginning.",
     notes: "Citrus · Jasmine · White Musk",
@@ -814,7 +798,7 @@ const fragrances = [
   {
     name: "VELVET",
     number: "02",
-    image: "images/Untitled%20design2.png",
+    image: "images/velvet.png",
     heading: "FEEL THE<br><em>SOFTNESS.</em>",
     description: "An intimate floral embrace. Delicate petals meet sensual warmth in a fragrance that feels like silk.",
     notes: "Rose · Peony · Sandalwood",
@@ -828,7 +812,7 @@ const fragrances = [
   {
     name: "NOIR",
     number: "03",
-    image: "images/Untitled%20design3.png",
+    image: "images/noir.png",
     heading: "OWN THE<br><em>MYSTERY.</em>",
     description: "Bold, magnetic and unforgettable. A deep composition created for those who leave an impression.",
     notes: "Oud · Amber · Black Pepper",
@@ -842,7 +826,7 @@ const fragrances = [
   {
     name: "AMOUR",
     number: "04",
-    image: "images/Untitled%20design4.png",
+    image: "images/amour.png",
     heading: "MADE OF<br><em>EMOTION.</em>",
     description: "A romantic expression of warmth and desire. An elegant fragrance that lingers like a beautiful memory.",
     notes: "Rose · Vanilla · Pink Pepper",
@@ -856,7 +840,7 @@ const fragrances = [
   {
     name: "ESSENCE",
     number: "05",
-    image: "images/Untitled%20design5.png",
+    image: "images/essence.png",
     heading: "PURE<br><em>BY NATURE.</em>",
     description: "Understated, harmonious and timeless. A refined blend inspired by nature and quiet luxury.",
     notes: "Green Tea · Cedar · White Flowers",
@@ -869,9 +853,6 @@ const fragrances = [
 
 ];
 
-
-/* ELEMENTS */
-
 const poster = document.getElementById("parPoster");
 const image = document.getElementById("fragranceImage");
 const options = document.querySelectorAll(".par-option");
@@ -879,22 +860,15 @@ const options = document.querySelectorAll(".par-option");
 let currentIndex = 0;
 let autoPlay;
 
-
-/* CHANGE FRAGRANCE */
-
 function showFragrance(index) {
 
   currentIndex = index;
 
   const scent = fragrances[index];
 
-  // Change background atmosphere
-
   poster.style.setProperty("--accent", scent.accent);
   poster.style.setProperty("--glow", scent.glow);
   poster.style.setProperty("--mood", scent.mood);
-
-  // Change text
 
   document.getElementById("overline").textContent =
     scent.overline;
@@ -914,8 +888,6 @@ function showFragrance(index) {
   document.getElementById("quote").textContent =
     scent.quote;
 
-  // Update image with smooth transition
-
   image.classList.add("changing");
 
   const nextImage = new Image();
@@ -933,21 +905,16 @@ function showFragrance(index) {
 
   nextImage.onerror = function() {
 
-    console.error("Could not load fragrance image:", scent.image);
+    console.error("Could not load image:", scent.image);
     image.classList.remove("changing");
 
   };
 
   nextImage.src = scent.image;
 
-  // Highlight selected fragrance
-
   options.forEach((option, i) => {
 
-    option.classList.toggle(
-      "active",
-      i === index
-    );
+    option.classList.toggle("active", i === index);
 
     option.setAttribute(
       "aria-pressed",
@@ -958,9 +925,6 @@ function showFragrance(index) {
 
 }
 
-
-/* CLICK TO CHANGE */
-
 options.forEach((option) => {
 
   option.addEventListener("click", () => {
@@ -968,15 +932,11 @@ options.forEach((option) => {
     const index = Number(option.dataset.index);
 
     showFragrance(index);
-
     restartAutoPlay();
 
   });
 
 });
-
-
-/* DISCOVER BUTTON */
 
 document.getElementById("discover").addEventListener("click", (event) => {
 
@@ -985,13 +945,9 @@ document.getElementById("discover").addEventListener("click", (event) => {
   const next = (currentIndex + 1) % fragrances.length;
 
   showFragrance(next);
-
   restartAutoPlay();
 
 });
-
-
-/* AUTOMATIC ROTATION */
 
 function startAutoPlay() {
 
@@ -1007,35 +963,22 @@ function startAutoPlay() {
 
 }
 
-
 function restartAutoPlay() {
 
   clearInterval(autoPlay);
-
   startAutoPlay();
 
 }
 
-
-/* PAUSE ON HOVER */
-
 poster.addEventListener("mouseenter", () => {
-
   clearInterval(autoPlay);
-
 });
 
 poster.addEventListener("mouseleave", () => {
-
   startAutoPlay();
-
 });
 
-
-/* INITIALIZE */
-
 showFragrance(0);
-
 startAutoPlay();
 
 </script>

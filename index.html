@@ -4,10 +4,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PAR — The Art of Fragrance</title>
+<title>PAR PARFUM — The Art of Scent</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
 * {
@@ -23,253 +23,513 @@ html, body {
 }
 
 body {
-  background: #11110f;
-  color: #f4efe6;
+  background: #151410;
+  color: #f5eee1;
   font-family: 'Montserrat', sans-serif;
 }
 
-.par-page {
-  width: 100%;
+.par-poster {
+  --accent: #d7b77e;
+  --glow: rgba(205, 161, 92, .25);
+  --liquid: #b78b4c;
+  --mood: #29231a;
+
   height: 100vh;
   height: 100svh;
-  min-height: 480px;
+  width: 100%;
+  min-height: 500px;
   position: relative;
   overflow: hidden;
+  isolation: isolate;
+  background:
+    radial-gradient(ellipse at 50% 50%, var(--mood), #151410 75%);
+  transition: background 1s ease;
   display: flex;
   flex-direction: column;
-  padding: 25px 5%;
-  background:
-    radial-gradient(ellipse at 50% 45%, #333027 0%, #191916 48%, #10100f 100%);
+  padding: 22px 5.5% 18px;
+}
+
+/* BACKGROUND DETAILS */
+
+.par-poster::before {
+  content: "";
+  position: absolute;
+  width: 60vw;
+  height: 60vw;
+  max-width: 700px;
+  max-height: 700px;
+  border-radius: 50%;
+  background: var(--glow);
+  filter: blur(100px);
+  top: 12%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: -1;
+  transition: background 1s ease;
+}
+
+.par-poster::after {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border: 1px solid rgba(216, 190, 145, .13);
+  pointer-events: none;
+  z-index: 10;
 }
 
 /* HEADER */
 
 .par-header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  z-index: 5;
+  justify-content: space-between;
+  position: relative;
+  z-index: 11;
 }
 
 .par-logo {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 39px;
-  letter-spacing: 12px;
+  font-size: 43px;
+  letter-spacing: 13px;
   font-weight: 400;
+  color: #f4ead7;
+}
+
+.par-header-center {
+  font-size: 8px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: #bba985;
 }
 
 .par-edition {
-  font-size: 9px;
-  letter-spacing: 4px;
-  color: #b9a987;
+  font-size: 8px;
+  letter-spacing: 3px;
+  color: var(--accent);
   text-transform: uppercase;
 }
 
-/* MAIN CONTENT */
+/* TOP LINE */
+
+.par-line {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #9d8965, transparent);
+  margin-top: 13px;
+  opacity: .65;
+}
+
+/* MAIN */
 
 .par-main {
   flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  position: relative;
   min-height: 0;
-  text-align: center;
-}
-
-.par-eyebrow {
-  font-size: 9px;
-  letter-spacing: 6px;
-  color: #c5b28d;
-  text-transform: uppercase;
-  margin-bottom: 8px;
-}
-
-.par-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(55px, 8vw, 105px);
-  font-weight: 300;
-  line-height: .88;
-  letter-spacing: 5px;
-  position: relative;
-  z-index: 2;
-}
-
-.par-subtitle {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(17px, 2vw, 25px);
-  font-style: italic;
-  color: #c8b99e;
-  letter-spacing: 2px;
-  margin-top: 13px;
-  position: relative;
-  z-index: 2;
-}
-
-/* PERFUME DISPLAY */
-
-.par-display {
-  width: min(680px, 78vw);
-  height: clamp(180px, 31vh, 300px);
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1.15fr 1fr;
   align-items: center;
-  justify-content: center;
-  gap: 18px;
-  margin: 5px 0 12px;
   position: relative;
+  z-index: 2;
 }
 
-.par-display::before {
-  content: "";
-  position: absolute;
-  width: 80%;
-  height: 65%;
-  border-radius: 50%;
-  background: #b49a68;
-  opacity: .10;
-  filter: blur(70px);
+/* LEFT TEXT */
+
+.par-left {
+  text-align: left;
+  position: relative;
+  z-index: 3;
+  padding-bottom: 25px;
 }
 
-.par-bottle {
-  position: relative;
-  width: 18%;
-  height: 65%;
-  min-width: 75px;
-  max-width: 125px;
+.par-overline {
+  font-size: 9px;
+  color: var(--accent);
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  margin-bottom: 22px;
+}
+
+.par-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: clamp(48px, 6vw, 88px);
+  line-height: .88;
+  letter-spacing: -2px;
+  max-width: 420px;
+  text-transform: uppercase;
+}
+
+.par-heading em {
+  font-weight: 300;
+  color: var(--accent);
+}
+
+.par-description {
+  max-width: 290px;
+  font-size: 10px;
+  line-height: 2;
+  letter-spacing: 1px;
+  color: #b9b1a3;
+  margin-top: 25px;
+  min-height: 62px;
+}
+
+.par-notes {
+  margin-top: 26px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  transition: transform .5s ease;
-  animation: appear 1.1s ease both;
+  gap: 8px;
 }
 
-.par-bottle:nth-child(2),
-.par-bottle:nth-child(4) {
-  transform: translateY(-17px);
-}
-
-.par-bottle:nth-child(3) {
-  transform: translateY(-30px) scale(1.13);
-  z-index: 2;
-}
-
-.par-bottle:hover {
-  transform: translateY(-22px) scale(1.08);
-}
-
-.bottle-cap {
-  width: 28%;
-  height: 16%;
-  background: linear-gradient(90deg, #9d8150, #e4d0a2, #9d8150);
-  border-radius: 2px 2px 0 0;
-  box-shadow: 0 0 15px #b49a6833;
-}
-
-.bottle-neck {
-  width: 38%;
-  height: 8%;
-  background: linear-gradient(90deg, #a58d65, #ead8b2, #a58d65);
-}
-
-.bottle-glass {
-  width: 100%;
-  height: 72%;
-  border: 1px solid #c4ae85;
-  border-radius: 9px 9px 13px 13px;
-  background: linear-gradient(
-    110deg,
-    rgba(255,255,255,.16),
-    rgba(195,169,119,.13) 35%,
-    rgba(255,255,255,.03) 70%,
-    rgba(255,255,255,.12)
-  );
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow:
-    inset 4px 0 12px #ffffff15,
-    0 12px 30px #00000055;
-  overflow: hidden;
-}
-
-.bottle-glass::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 53%;
-  background: var(--liquid);
-  opacity: .72;
-}
-
-.bottle-label {
-  z-index: 1;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(10px, 1.2vw, 16px);
-  letter-spacing: 3px;
-  color: #f2e8d4;
-  text-shadow: 0 1px 4px #000;
-}
-
-.bottle-number {
-  position: absolute;
-  bottom: -23px;
+.par-notes-label {
   font-size: 8px;
   letter-spacing: 3px;
-  color: #c4ae85;
+  color: var(--accent);
+  text-transform: uppercase;
 }
 
-/* FRAGRANCES */
+.par-notes-value {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  letter-spacing: 1px;
+  color: #e5d7c0;
+}
 
-.par-fragrances {
+.par-discover {
+  display: inline-block;
+  margin-top: 32px;
+  padding: 13px 24px;
+  border: 1px solid var(--accent);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 8px;
+  color: #f2e7d4;
+  transition: .35s;
+}
+
+.par-discover:hover {
+  background: var(--accent);
+  color: #17130e;
+}
+
+/* CENTER PERFUME */
+
+.par-center {
+  height: 100%;
+  min-height: 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.par-halo {
+  position: absolute;
+  width: min(31vw, 390px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--glow), transparent 68%);
+  filter: blur(18px);
+  transition: background 1s;
+}
+
+.par-orbit {
+  position: absolute;
+  width: min(34vw, 410px);
+  aspect-ratio: 1;
+  border: 1px solid rgba(218, 195, 154, .17);
+  border-radius: 50%;
+  transform: scaleY(.38) rotate(-25deg);
+}
+
+.par-orbit::before {
+  content: "";
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  top: 10%;
+  left: 19%;
+  box-shadow: 0 0 15px var(--accent);
+}
+
+.par-orbit-two {
+  position: absolute;
+  width: min(29vw, 350px);
+  aspect-ratio: 1;
+  border: 1px solid rgba(218, 195, 154, .12);
+  border-radius: 50%;
+  transform: scaleY(.38) rotate(30deg);
+}
+
+/* BOTTLE */
+
+.par-bottle-wrap {
+  position: relative;
+  width: 210px;
+  height: 340px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  z-index: 3;
+  animation: bottleFloat 5s ease-in-out infinite;
+  filter: drop-shadow(0 25px 30px rgba(0,0,0,.45));
+}
+
+.par-bottle-wrap.changing {
+  animation: bottleEnter .75s ease both;
+}
+
+.par-cap {
+  height: 46px;
+  width: 57px;
+  background: linear-gradient(
+    90deg,
+    #76603e,
+    #f2dba9,
+    #a78b57,
+    #f5dfad,
+    #725b38
+  );
+  border: 1px solid #d7bf8d;
+  border-radius: 5px 5px 2px 2px;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 4px 12px #0008;
+}
+
+.par-cap::after {
+  content: "";
+  position: absolute;
+  inset: 5px 8px;
+  border: 1px solid #ffffff66;
+}
+
+.par-neck {
+  height: 20px;
+  width: 66px;
+  background: linear-gradient(90deg, #8e7248, #e8d1a2, #93784e);
+  border-left: 1px solid #ead8ad;
+  border-right: 1px solid #ead8ad;
+}
+
+.par-glass {
+  height: 245px;
+  width: 175px;
+  position: relative;
+  border: 2px solid rgba(228, 209, 170, .8);
+  border-radius: 19px 19px 24px 24px;
+  background: linear-gradient(
+    110deg,
+    rgba(255,255,255,.24),
+    rgba(255,255,255,.03) 20%,
+    rgba(255,255,255,.08) 55%,
+    rgba(255,255,255,.22)
+  );
+  box-shadow:
+    inset 7px 0 15px rgba(255,255,255,.13),
+    inset -7px 0 15px rgba(0,0,0,.15),
+    0 20px 45px rgba(0,0,0,.3);
+  overflow: hidden;
   display: flex;
   justify-content: center;
-  gap: clamp(15px, 4vw, 60px);
+  align-items: center;
+}
+
+.par-glass::before {
+  content: "";
+  position: absolute;
+  width: 22px;
+  height: 90%;
+  top: 5%;
+  left: 9px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.12);
+  filter: blur(5px);
+  z-index: 3;
+}
+
+.par-liquid {
+  position: absolute;
+  bottom: 0;
+  height: 67%;
   width: 100%;
-  margin-bottom: 15px;
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--liquid), black 25%),
+    var(--liquid),
+    color-mix(in srgb, var(--liquid), white 18%),
+    var(--liquid)
+  );
+  opacity: .8;
+  transition: background 1s ease;
 }
 
-.par-scent {
-  min-width: 0;
+.par-liquid::before {
+  content: "";
+  position: absolute;
+  height: 10px;
+  width: 100%;
+  top: -4px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.22);
+}
+
+.par-label {
+  position: relative;
+  z-index: 4;
+  width: 80%;
+  padding: 23px 5px;
   text-align: center;
+  border-top: 1px solid rgba(233, 214, 174, .55);
+  border-bottom: 1px solid rgba(233, 214, 174, .55);
+  background: rgba(22, 19, 14, .25);
+  color: #f6e9d0;
+  text-shadow: 0 2px 5px #0008;
 }
 
-.par-scent h3 {
+.par-label-name {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(14px, 1.5vw, 19px);
-  font-weight: 400;
-  letter-spacing: 1px;
+  font-size: 34px;
+  letter-spacing: 6px;
 }
 
-.par-scent p {
+.par-label-type {
   font-size: 7px;
-  color: #b8a98c;
-  letter-spacing: 2px;
-  margin-top: 5px;
-  text-transform: uppercase;
-}
-
-/* BUTTON */
-
-.par-button {
-  display: inline-block;
-  padding: 12px 34px;
-  border: 1px solid #bba77e;
-  color: #e8ddc8;
-  text-decoration: none;
-  font-size: 9px;
   letter-spacing: 4px;
-  text-transform: uppercase;
-  transition: .35s ease;
-  margin-top: 3px;
+  margin-top: 6px;
 }
 
-.par-button:hover {
-  background: #c2aa7d;
-  color: #11110f;
+.par-base {
+  width: 190px;
+  height: 10px;
+  background: linear-gradient(90deg, transparent, #c7a875, transparent);
+  opacity: .65;
+}
+
+/* RIGHT SIDE */
+
+.par-right {
+  text-align: right;
+  z-index: 3;
+  padding-bottom: 25px;
+}
+
+.par-number {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(60px, 8vw, 105px);
+  font-weight: 300;
+  color: var(--accent);
+  line-height: 1;
+  transition: color .8s;
+}
+
+.par-number-label {
+  font-size: 8px;
+  letter-spacing: 4px;
+  color: #b6a88e;
+  text-transform: uppercase;
+  margin-top: 10px;
+}
+
+.par-side-line {
+  width: 65px;
+  height: 1px;
+  background: var(--accent);
+  margin: 25px 0 25px auto;
+}
+
+.par-right-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px;
+  line-height: 1.15;
+  color: #e6d9c4;
+  font-style: italic;
+  max-width: 190px;
+  margin-left: auto;
+}
+
+/* BOTTOM SELECTOR */
+
+.par-bottom {
+  position: relative;
+  z-index: 5;
+  padding-top: 13px;
+  border-top: 1px solid rgba(204, 179, 137, .28);
+}
+
+.par-selector-heading {
+  text-align: center;
+  font-size: 8px;
+  letter-spacing: 5px;
+  color: #b6a88e;
+  text-transform: uppercase;
+  margin-bottom: 13px;
+}
+
+.par-selector {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+}
+
+.par-option {
+  border: none;
+  border-top: 1px solid rgba(211, 188, 148, .25);
+  padding: 11px 5px 5px;
+  background: transparent;
+  color: #aaa08f;
+  cursor: pointer;
+  font-family: inherit;
+  text-align: center;
+  transition: .35s ease;
+  position: relative;
+}
+
+.par-option::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 1px;
+  background: var(--accent);
+  top: -1px;
+  left: 50%;
+  transition: .35s ease;
+}
+
+.par-option:hover,
+.par-option.active {
+  color: #f5e8d0;
+}
+
+.par-option.active::before {
+  width: 100%;
+  left: 0;
+}
+
+.par-option-number {
+  display: block;
+  font-size: 8px;
+  letter-spacing: 3px;
+  color: var(--accent);
+  margin-bottom: 5px;
+}
+
+.par-option-name {
+  display: block;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(17px, 2vw, 25px);
+  letter-spacing: 2px;
+}
+
+.par-option-notes {
+  display: block;
+  font-size: 7px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-top: 4px;
+  color: #8e8678;
 }
 
 /* FOOTER */
@@ -278,35 +538,78 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: #817963;
-  font-size: 8px;
-  letter-spacing: 2px;
+  padding-top: 12px;
+  color: #8f8676;
+  font-size: 7px;
+  letter-spacing: 3px;
   text-transform: uppercase;
+  position: relative;
   z-index: 5;
 }
 
-.par-footer span:last-child {
-  color: #bba77e;
+.par-footer span:nth-child(2) {
+  color: var(--accent);
 }
 
-/* ANIMATION */
+/* ANIMATIONS */
 
-@keyframes appear {
-  from {
+@keyframes bottleFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes bottleEnter {
+  0% {
     opacity: 0;
-    transform: translateY(25px);
+    transform: translateY(35px) scale(.85);
+    filter: blur(7px);
   }
-  to {
+  100% {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+/* TABLET */
+
+@media (max-width: 850px) {
+  .par-poster {
+    padding-left: 4%;
+    padding-right: 4%;
+  }
+
+  .par-main {
+    grid-template-columns: .95fr 1fr .8fr;
+  }
+
+  .par-bottle-wrap {
+    transform: scale(.85);
+  }
+
+  .par-heading {
+    font-size: clamp(42px, 7vw, 65px);
+  }
+
+  .par-description {
+    font-size: 9px;
+  }
+
+  .par-right-quote {
+    font-size: 19px;
   }
 }
 
 /* MOBILE */
 
 @media (max-width: 600px) {
-  .par-page {
-    padding: 20px 5%;
+  .par-poster {
+    min-height: 0;
+    padding: 15px 5% 12px;
+  }
+
+  .par-poster::after {
+    inset: 6px;
   }
 
   .par-logo {
@@ -314,77 +617,155 @@ body {
     letter-spacing: 9px;
   }
 
+  .par-header-center {
+    display: none;
+  }
+
   .par-edition {
-    font-size: 7px;
-    letter-spacing: 2px;
-  }
-
-  .par-display {
-    width: 100%;
-    height: 24vh;
-    gap: 9px;
-  }
-
-  .par-bottle {
-    min-width: 52px;
-    width: 18%;
-    height: 65%;
-  }
-
-  .par-bottle:nth-child(2),
-  .par-bottle:nth-child(4) {
-    transform: translateY(-10px);
-  }
-
-  .par-bottle:nth-child(3) {
-    transform: translateY(-18px) scale(1.1);
-  }
-
-  .par-fragrances {
-    gap: 8px;
-    margin-bottom: 20px;
-  }
-
-  .par-scent h3 {
-    font-size: 13px;
-  }
-
-  .par-scent p {
     font-size: 6px;
     letter-spacing: 1px;
   }
 
-  .par-button {
-    padding: 11px 24px;
+  .par-main {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1fr auto;
+    align-items: center;
+    padding-top: 15px;
+  }
+
+  .par-left {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 0;
+    order: 1;
+  }
+
+  .par-overline {
+    font-size: 7px;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+  }
+
+  .par-heading {
+    font-size: clamp(38px, 10vw, 58px);
+    max-width: none;
+    line-height: .9;
+  }
+
+  .par-description {
+    margin: 10px auto 0;
     font-size: 8px;
+    line-height: 1.6;
+    min-height: 26px;
+    max-width: 270px;
+  }
+
+  .par-notes {
+    display: none;
+  }
+
+  .par-discover {
+    display: none;
+  }
+
+  .par-center {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    min-height: 0;
+  }
+
+  .par-bottle-wrap {
+    transform: scale(.7);
+    transform-origin: center;
+  }
+
+  .par-halo {
+    width: 65vw;
+  }
+
+  .par-orbit {
+    width: 70vw;
+  }
+
+  .par-orbit-two {
+    width: 60vw;
+  }
+
+  .par-right {
+    display: none;
+  }
+
+  .par-bottom {
+    padding-top: 10px;
+  }
+
+  .par-selector-heading {
+    font-size: 7px;
+    letter-spacing: 3px;
+    margin-bottom: 9px;
+  }
+
+  .par-selector {
+    gap: 3px;
+  }
+
+  .par-option {
+    padding: 9px 2px 3px;
+  }
+
+  .par-option-number {
+    font-size: 6px;
+    letter-spacing: 1px;
+  }
+
+  .par-option-name {
+    font-size: clamp(12px, 3.4vw, 18px);
+    letter-spacing: 0;
+  }
+
+  .par-option-notes {
+    display: none;
   }
 
   .par-footer {
     font-size: 6px;
     letter-spacing: 1px;
+    padding-top: 10px;
   }
 }
 
-@media (max-height: 650px) {
-  .par-page {
-    padding-top: 14px;
-    padding-bottom: 14px;
+@media (max-height: 650px) and (min-width: 601px) {
+  .par-poster {
+    padding-top: 12px;
+    padding-bottom: 10px;
   }
 
-  .par-display {
-    height: 23vh;
+  .par-bottle-wrap {
+    transform: scale(.78);
   }
 
-  .par-title {
-    font-size: clamp(48px, 7vw, 75px);
+  .par-heading {
+    font-size: clamp(45px, 5vw, 65px);
   }
 
-  .par-subtitle {
-    margin-top: 7px;
+  .par-description {
+    margin-top: 13px;
   }
 
-  .par-fragrances {
-    margin-bottom: 10px;
+  .par-notes {
+    margin-top: 13px;
+  }
+
+  .par-discover {
+    margin-top: 17px;
+  }
+
+  .par-selector-heading {
+    margin-bottom: 8px;
+  }
+
+  .par-bottom {
+    padding-top: 8px;
   }
 }
 </style>
@@ -392,108 +773,286 @@ body {
 
 <body>
 
-<div class="par-page">
+<div class="par-poster" id="parPoster">
 
   <header class="par-header">
     <div class="par-logo">PAR</div>
-    <div class="par-edition">The Fragrance Collection · Nº 01</div>
+    <div class="par-header-center">The art of personal fragrance</div>
+    <div class="par-edition">The signature collection</div>
   </header>
+
+  <div class="par-line"></div>
 
   <main class="par-main">
 
-    <div class="par-eyebrow">A new expression of luxury</div>
+    <!-- LEFT INFORMATION -->
 
-    <h1 class="par-title">BEYOND<br>THE ORDINARY.</h1>
+    <section class="par-left">
+      <div class="par-overline" id="overline">
+        A new expression of luxury
+      </div>
 
-    <p class="par-subtitle">A scent that becomes a signature.</p>
+      <h1 class="par-heading" id="heading">
+        BEYOND<br><em>ORDINARY.</em>
+      </h1>
 
-    <div class="par-display">
+      <p class="par-description" id="description">
+        Discover a fragrance that captures your individuality.
+        An unforgettable expression of elegance.
+      </p>
 
-      <div class="par-bottle" style="--liquid:#b18a56">
-        <div class="bottle-cap"></div>
-        <div class="bottle-neck"></div>
-        <div class="bottle-glass">
-          <span class="bottle-label">PAR</span>
+      <div class="par-notes">
+        <span class="par-notes-label">Fragrance notes</span>
+        <span class="par-notes-value" id="notes">
+          Citrus · Jasmine · White Musk
+        </span>
+      </div>
+
+      <a href="#collection" class="par-discover"
+         onclick="event.preventDefault(); selectNext();">
+        Discover the scent
+      </a>
+    </section>
+
+    <!-- CENTER BOTTLE -->
+
+    <section class="par-center">
+
+      <div class="par-halo"></div>
+      <div class="par-orbit"></div>
+      <div class="par-orbit-two"></div>
+
+      <div class="par-bottle-wrap" id="bottle">
+        <div class="par-cap"></div>
+        <div class="par-neck"></div>
+
+        <div class="par-glass">
+          <div class="par-liquid"></div>
+
+          <div class="par-label">
+            <div class="par-label-name">PAR</div>
+            <div class="par-label-type" id="bottleName">
+              ÉCLAT
+            </div>
+          </div>
         </div>
-        <span class="bottle-number">01</span>
+
+        <div class="par-base"></div>
       </div>
 
-      <div class="par-bottle" style="--liquid:#9c9a80">
-        <div class="bottle-cap"></div>
-        <div class="bottle-neck"></div>
-        <div class="bottle-glass">
-          <span class="bottle-label">PAR</span>
-        </div>
-        <span class="bottle-number">02</span>
+    </section>
+
+    <!-- RIGHT INFORMATION -->
+
+    <section class="par-right">
+      <div class="par-number" id="number">01</div>
+      <div class="par-number-label">The fragrance</div>
+      <div class="par-side-line"></div>
+      <div class="par-right-quote" id="quote">
+        A moment of light. A lasting impression.
       </div>
-
-      <div class="par-bottle" style="--liquid:#a98254">
-        <div class="bottle-cap"></div>
-        <div class="bottle-neck"></div>
-        <div class="bottle-glass">
-          <span class="bottle-label">PAR</span>
-        </div>
-        <span class="bottle-number">03</span>
-      </div>
-
-      <div class="par-bottle" style="--liquid:#a78b99">
-        <div class="bottle-cap"></div>
-        <div class="bottle-neck"></div>
-        <div class="bottle-glass">
-          <span class="bottle-label">PAR</span>
-        </div>
-        <span class="bottle-number">04</span>
-      </div>
-
-      <div class="par-bottle" style="--liquid:#8e785d">
-        <div class="bottle-cap"></div>
-        <div class="bottle-neck"></div>
-        <div class="bottle-glass">
-          <span class="bottle-label">PAR</span>
-        </div>
-        <span class="bottle-number">05</span>
-      </div>
-
-    </div>
-
-    <div class="par-fragrances">
-      <div class="par-scent">
-        <h3>ÉCLAT</h3>
-        <p>Radiant · Fresh</p>
-      </div>
-
-      <div class="par-scent">
-        <h3>VELVET</h3>
-        <p>Soft · Floral</p>
-      </div>
-
-      <div class="par-scent">
-        <h3>NOIR</h3>
-        <p>Deep · Woody</p>
-      </div>
-
-      <div class="par-scent">
-        <h3>AMOUR</h3>
-        <p>Warm · Romantic</p>
-      </div>
-
-      <div class="par-scent">
-        <h3>ESSENCE</h3>
-        <p>Pure · Timeless</p>
-      </div>
-    </div>
-
-    <a href="#collection" class="par-button">Discover PAR</a>
+    </section>
 
   </main>
 
+  <!-- FIVE FRAGRANCES -->
+
+  <section class="par-bottom" id="collection">
+
+    <div class="par-selector-heading">
+      Explore the five signatures · Select your fragrance
+    </div>
+
+    <div class="par-selector">
+
+      <button class="par-option active" data-index="0">
+        <span class="par-option-number">01</span>
+        <span class="par-option-name">ÉCLAT</span>
+        <span class="par-option-notes">Radiant · Fresh</span>
+      </button>
+
+      <button class="par-option" data-index="1">
+        <span class="par-option-number">02</span>
+        <span class="par-option-name">VELVET</span>
+        <span class="par-option-notes">Soft · Floral</span>
+      </button>
+
+      <button class="par-option" data-index="2">
+        <span class="par-option-number">03</span>
+        <span class="par-option-name">NOIR</span>
+        <span class="par-option-notes">Deep · Woody</span>
+      </button>
+
+      <button class="par-option" data-index="3">
+        <span class="par-option-number">04</span>
+        <span class="par-option-name">AMOUR</span>
+        <span class="par-option-notes">Warm · Romantic</span>
+      </button>
+
+      <button class="par-option" data-index="4">
+        <span class="par-option-number">05</span>
+        <span class="par-option-name">ESSENCE</span>
+        <span class="par-option-notes">Pure · Timeless</span>
+      </button>
+
+    </div>
+  </section>
+
   <footer class="par-footer">
     <span>Crafted to be remembered</span>
-    <span>Five scents. One identity.</span>
-    <span>PAR · Est. 2026</span>
+    <span>Five scents · One identity</span>
+    <span>PAR PARFUM © 2026</span>
   </footer>
 
 </div>
+
+<script>
+const fragrances = [
+  {
+    name: "ÉCLAT",
+    number: "01",
+    heading: "A TOUCH<br><em>OF LIGHT.</em>",
+    description: "Bright, effortless and captivating. A luminous fragrance inspired by the beauty of a new beginning.",
+    notes: "Citrus · Jasmine · White Musk",
+    quote: "A moment of light. A lasting impression.",
+    liquid: "#c99a51",
+    accent: "#e5c58e",
+    glow: "rgba(204, 157, 82, .30)",
+    mood: "#302719",
+    overline: "The art of radiance"
+  },
+  {
+    name: "VELVET",
+    number: "02",
+    heading: "FEEL THE<br><em>SOFTNESS.</em>",
+    description: "An intimate floral embrace. Delicate petals meet sensual warmth in a fragrance that feels like silk.",
+    notes: "Rose · Peony · Sandalwood",
+    quote: "Softness is the ultimate sophistication.",
+    liquid: "#ad665e",
+    accent: "#dba59a",
+    glow: "rgba(174, 91, 91, .28)",
+    mood: "#30201f",
+    overline: "The art of softness"
+  },
+  {
+    name: "NOIR",
+    number: "03",
+    heading: "OWN THE<br><em>MYSTERY.</em>",
+    description: "Bold, magnetic and unforgettable. A deep composition created for those who leave an impression.",
+    notes: "Oud · Amber · Black Pepper",
+    quote: "Some stories are best left mysterious.",
+    liquid: "#63412d",
+    accent: "#bd956d",
+    glow: "rgba(126, 83, 51, .30)",
+    mood: "#211a16",
+    overline: "The art of mystery"
+  },
+  {
+    name: "AMOUR",
+    number: "04",
+    heading: "MADE OF<br><em>EMOTION.</em>",
+    description: "A romantic expression of warmth and desire. An elegant fragrance that lingers like a beautiful memory.",
+    notes: "Rose · Vanilla · Pink Pepper",
+    quote: "Wear the feeling. Remember the moment.",
+    liquid: "#bd827c",
+    accent: "#e0aaa1",
+    glow: "rgba(192, 115, 125, .28)",
+    mood: "#302023",
+    overline: "The art of emotion"
+  },
+  {
+    name: "ESSENCE",
+    number: "05",
+    heading: "PURE<br><em>BY NATURE.</em>",
+    description: "Understated, harmonious and timeless. A refined blend inspired by nature and quiet luxury.",
+    notes: "Green Tea · Cedar · White Flowers",
+    quote: "True elegance never asks for attention.",
+    liquid: "#8c9875",
+    accent: "#c3c9a2",
+    glow: "rgba(129, 151, 103, .27)",
+    mood: "#20251b",
+    overline: "The art of simplicity"
+  }
+];
+
+const poster = document.getElementById("parPoster");
+const bottle = document.getElementById("bottle");
+const options = document.querySelectorAll(".par-option");
+
+let currentIndex = 0;
+let autoPlay;
+
+function showFragrance(index) {
+  currentIndex = index;
+
+  const scent = fragrances[index];
+
+  // Update poster atmosphere
+  poster.style.setProperty("--accent", scent.accent);
+  poster.style.setProperty("--liquid", scent.liquid);
+  poster.style.setProperty("--glow", scent.glow);
+  poster.style.setProperty("--mood", scent.mood);
+
+  // Update text
+  document.getElementById("overline").textContent = scent.overline;
+  document.getElementById("heading").innerHTML = scent.heading;
+  document.getElementById("description").textContent = scent.description;
+  document.getElementById("notes").textContent = scent.notes;
+  document.getElementById("number").textContent = scent.number;
+  document.getElementById("quote").textContent = scent.quote;
+  document.getElementById("bottleName").textContent = scent.name;
+
+  // Animate bottle
+  bottle.classList.remove("changing");
+  void bottle.offsetWidth;
+  bottle.classList.add("changing");
+
+  // Highlight selected fragrance
+  options.forEach((option, i) => {
+    option.classList.toggle("active", i === index);
+  });
+}
+
+// Click to change fragrance
+options.forEach((option) => {
+  option.addEventListener("click", () => {
+    const index = Number(option.dataset.index);
+    showFragrance(index);
+    restartAutoPlay();
+  });
+});
+
+// Move to next fragrance
+function selectNext() {
+  showFragrance((currentIndex + 1) % fragrances.length);
+  restartAutoPlay();
+}
+
+// Automatic rotation
+function startAutoPlay() {
+  autoPlay = setInterval(() => {
+    showFragrance((currentIndex + 1) % fragrances.length);
+  }, 6000);
+}
+
+function restartAutoPlay() {
+  clearInterval(autoPlay);
+  startAutoPlay();
+}
+
+// Start
+showFragrance(0);
+startAutoPlay();
+
+// Pause automatic rotation when the user interacts with the poster
+poster.addEventListener("mouseenter", () => {
+  clearInterval(autoPlay);
+});
+
+poster.addEventListener("mouseleave", () => {
+  startAutoPlay();
+});
+</script>
 
 </body>
 </html>

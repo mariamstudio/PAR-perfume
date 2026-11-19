@@ -4,646 +4,1131 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PAR PARFUM — The Art of Scent</title>
+<meta name="theme-color" content="#f3efe8">
+<title>PAR PARFUM — Fragrance, Reimagined</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
+:root {
+  --cream: #f3efe8;
+  --paper: #eae3d8;
+  --ink: #251f1d;
+  --muted: #81756c;
+  --wine: #773c43;
+  --gold: #b69a70;
+  --line: rgba(48, 37, 32, .17);
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'DM Sans', Arial, sans-serif;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-html, body {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 85px;
 }
 
 body {
-  background: #11110f;
-  color: #f4efe6;
-  font-family: 'Montserrat', sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--sans);
+  overflow-x: hidden;
 }
 
-.par-poster {
-  --accent: #e0bd7d;
-  --glow: rgba(204,157,82,.30);
-  --mood: #302719;
+a {
+  color: inherit;
+  text-decoration: none;
+}
 
-  width: 100%;
-  height: 100vh;
-  height: 100svh;
-  padding: 22px 5.5% 17px;
+button {
+  font: inherit;
+}
+
+/* -------------------------
+   ANNOUNCEMENT
+------------------------- */
+
+.announcement {
+  height: 29px;
+  background: var(--wine);
+  color: #f5eee6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+/* -------------------------
+   HEADER
+------------------------- */
+
+.header {
+  height: 82px;
+  padding: 0 6%;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  background: rgba(243,239,232,.94);
+  border-bottom: 1px solid var(--line);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(16px);
+}
+
+.nav-left,
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.nav-right {
+  justify-content: flex-end;
+}
+
+.nav-link {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1.8px;
+  color: #5c514b;
+  transition: color .3s;
+}
+
+.nav-link:hover {
+  color: var(--wine);
+}
+
+.logo {
+  font-family: var(--serif);
+  font-size: 43px;
+  font-weight: 400;
+  letter-spacing: 13px;
+  padding-left: 13px;
+  line-height: 1;
+}
+
+.menu-toggle {
+  display: none;
+  border: 0;
+  background: transparent;
+  font-size: 23px;
+  cursor: pointer;
+  color: var(--ink);
+}
+
+/* -------------------------
+   HERO
+------------------------- */
+
+.hero {
+  min-height: 690px;
+  height: min(790px, calc(100svh - 111px));
+  max-height: 850px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  position: relative;
+  overflow: hidden;
+  background: #eee8de;
+}
+
+.hero-copy {
+  padding: 90px 0 80px 12%;
   display: flex;
   flex-direction: column;
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
-
-  background:
-    radial-gradient(ellipse at 52% 48%, var(--mood), #11110f 78%);
-
-  transition: background 1s ease;
-}
-
-.par-poster::before {
-  content: "";
-  position: absolute;
-  width: 60vw;
-  height: 60vw;
-  max-width: 700px;
-  max-height: 700px;
-  border-radius: 50%;
-  background: var(--glow);
-  filter: blur(110px);
-  top: 10%;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: -1;
-  transition: background 1s ease;
-}
-
-.par-poster::after {
-  content: "";
-  position: absolute;
-  inset: 12px;
-  border: 1px solid rgba(216,190,145,.15);
-  pointer-events: none;
-  z-index: 10;
-}
-
-/* HEADER */
-
-.par-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: relative;
-  z-index: 11;
-  flex-shrink: 0;
-}
-
-.par-logo {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 43px;
-  letter-spacing: 13px;
-  font-weight: 400;
-  color: #f4ead7;
-}
-
-.par-header-center {
-  font-size: 8px;
-  letter-spacing: 5px;
-  text-transform: uppercase;
-  color: #bba985;
-}
-
-.par-edition {
-  font-size: 8px;
-  letter-spacing: 3px;
-  color: var(--accent);
-  text-transform: uppercase;
-}
-
-.par-line {
-  height: 1px;
-  background: linear-gradient(90deg, transparent, #9d8965, transparent);
-  margin-top: 13px;
-  opacity: .65;
-  flex-shrink: 0;
-}
-
-/* MAIN */
-
-.par-main {
-  flex: 1;
-  min-height: 0;
-  display: grid;
-  grid-template-columns: 1fr 1.3fr 1fr;
-  align-items: center;
+  justify-content: center;
+  align-items: flex-start;
   position: relative;
   z-index: 2;
 }
 
-/* LEFT */
-
-.par-left {
-  text-align: left;
-  position: relative;
-  z-index: 3;
-  padding-bottom: 15px;
-}
-
-.par-overline {
+.eyebrow {
+  color: var(--wine);
   font-size: 9px;
-  color: var(--accent);
-  letter-spacing: 5px;
-  text-transform: uppercase;
-  margin-bottom: 22px;
-}
-
-.par-heading {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 300;
-  font-size: clamp(48px, 6vw, 88px);
-  line-height: .88;
-  letter-spacing: -2px;
-  max-width: 420px;
-  text-transform: uppercase;
-}
-
-.par-heading em {
-  font-weight: 300;
-  color: var(--accent);
-  font-style: normal;
-}
-
-.par-description {
-  max-width: 290px;
-  font-size: 10px;
-  line-height: 2;
-  letter-spacing: 1px;
-  color: #b9b1a3;
-  margin-top: 25px;
-  min-height: 62px;
-}
-
-.par-notes {
-  margin-top: 25px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.par-notes-label {
-  font-size: 8px;
-  letter-spacing: 3px;
-  color: var(--accent);
-  text-transform: uppercase;
-}
-
-.par-notes-value {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 18px;
-  letter-spacing: 1px;
-  color: #e5d7c0;
-}
-
-.par-discover {
-  display: inline-block;
-  margin-top: 28px;
-  padding: 13px 24px;
-  border: 1px solid var(--accent);
-  text-decoration: none;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  font-size: 8px;
-  color: #f2e7d4;
-  transition: .35s;
-}
-
-.par-discover:hover {
-  background: var(--accent);
-  color: #17130e;
-}
-
-/* CENTER IMAGE */
-
-.par-center {
-  width: 100%;
-  height: 100%;
-  min-height: 0;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: visible;
-}
-
-.par-halo {
-  position: absolute;
-  width: min(36vw, 480px);
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background: radial-gradient(circle, var(--glow), transparent 68%);
-  filter: blur(22px);
-  transition: background 1s ease;
-}
-
-.par-orbit {
-  position: absolute;
-  width: min(37vw, 440px);
-  aspect-ratio: 1;
-  border: 1px solid rgba(218,195,154,.17);
-  border-radius: 50%;
-  transform: scaleY(.38) rotate(-25deg);
-}
-
-.par-orbit::before {
-  content: "";
-  position: absolute;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--accent);
-  top: 10%;
-  left: 19%;
-  box-shadow: 0 0 15px var(--accent);
-}
-
-.par-orbit-two {
-  position: absolute;
-  width: min(31vw, 370px);
-  aspect-ratio: 1;
-  border: 1px solid rgba(218,195,154,.12);
-  border-radius: 50%;
-  transform: scaleY(.38) rotate(30deg);
-}
-
-.par-image-wrap {
-  width: 100%;
-  height: 100%;
-  min-height: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  z-index: 3;
-  animation: imageFloat 6s ease-in-out infinite;
-}
-
-.par-image {
-  display: block;
-  width: 100%;
-  height: 100%;
-  max-height: 620px;
-  object-fit: contain;
-  object-position: center;
-  filter: drop-shadow(0 25px 35px rgba(0,0,0,.42));
-  transition: opacity .55s ease, transform .75s ease, filter .7s ease;
-}
-
-.par-image.changing {
-  opacity: 0;
-  transform: translateY(24px) scale(.94);
-  filter: blur(8px);
-}
-
-/* RIGHT */
-
-.par-right {
-  text-align: right;
-  z-index: 3;
-  padding-bottom: 15px;
-}
-
-.par-number {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(60px, 8vw, 105px);
-  font-weight: 300;
-  color: var(--accent);
-  line-height: 1;
-}
-
-.par-number-label {
-  font-size: 8px;
   letter-spacing: 4px;
-  color: #b6a88e;
   text-transform: uppercase;
-  margin-top: 10px;
+  margin-bottom: 28px;
 }
 
-.par-side-line {
-  width: 65px;
-  height: 1px;
-  background: var(--accent);
-  margin: 25px 0 25px auto;
+.hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(76px, 10vw, 148px);
+  line-height: .78;
+  letter-spacing: -5px;
+  font-weight: 300;
 }
 
-.par-right-quote {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 24px;
-  line-height: 1.15;
-  color: #e6d9c4;
-  font-style: italic;
-  max-width: 190px;
-  margin-left: auto;
-}
-
-/* BOTTOM SELECTOR */
-
-.par-bottom {
-  position: relative;
-  z-index: 5;
-  padding-top: 13px;
-  border-top: 1px solid rgba(204,179,137,.28);
-  flex-shrink: 0;
-}
-
-.par-selector-heading {
-  text-align: center;
-  font-size: 8px;
-  letter-spacing: 5px;
-  color: #b6a88e;
-  text-transform: uppercase;
-  margin-bottom: 13px;
-}
-
-.par-selector {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 12px;
-}
-
-.par-option {
-  border: none;
-  border-top: 1px solid rgba(211,188,148,.25);
-  padding: 11px 5px 5px;
-  background: transparent;
-  color: #aaa08f;
-  cursor: pointer;
-  font-family: inherit;
-  text-align: center;
-  transition: .35s ease;
-  position: relative;
-}
-
-.par-option::before {
-  content: "";
-  position: absolute;
-  width: 0;
-  height: 1px;
-  background: var(--accent);
-  top: -1px;
-  left: 50%;
-  transition: .35s ease;
-}
-
-.par-option:hover,
-.par-option.active {
-  color: #f5e8d0;
-}
-
-.par-option.active::before {
-  width: 100%;
-  left: 0;
-}
-
-.par-option-number {
+.hero h1 span {
   display: block;
+  color: var(--wine);
+  font-style: italic;
+  margin-left: 48px;
+}
+
+.hero-description {
+  max-width: 340px;
+  color: #766a61;
+  font-size: 12px;
+  line-height: 2;
+  margin-top: 36px;
+  font-weight: 300;
+}
+
+.primary-button {
+  margin-top: 34px;
+  padding: 16px 29px;
+  background: var(--wine);
+  color: #fff8f0;
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border: 1px solid var(--wine);
+  transition: .35s;
+  display: inline-flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.primary-button:hover {
+  background: transparent;
+  color: var(--wine);
+}
+
+.primary-button span {
+  font-size: 15px;
+}
+
+.hero-caption {
+  position: absolute;
+  bottom: 34px;
+  left: 12%;
+  color: #95877a;
   font-size: 8px;
   letter-spacing: 3px;
-  color: var(--accent);
-  margin-bottom: 5px;
-}
-
-.par-option-name {
-  display: block;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(17px, 2vw, 25px);
-  letter-spacing: 2px;
-}
-
-.par-option-notes {
-  display: block;
-  font-size: 7px;
-  letter-spacing: 1px;
   text-transform: uppercase;
-  margin-top: 4px;
-  color: #8e8678;
 }
 
-/* FOOTER */
+.hero-visual {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(ellipse at 50% 48%, #d9c9b5 0%, #e7ded1 44%, #eee8de 75%);
+  overflow: hidden;
+}
 
-.par-footer {
+.hero-visual::before {
+  content: "PAR";
+  position: absolute;
+  font-family: var(--serif);
+  font-size: clamp(170px, 28vw, 400px);
+  color: rgba(255,255,255,.23);
+  letter-spacing: 15px;
+  transform: rotate(-90deg);
+  white-space: nowrap;
+}
+
+.hero-image {
+  position: relative;
+  z-index: 2;
+  width: 78%;
+  height: 92%;
+  object-fit: contain;
+  filter: drop-shadow(0 30px 35px rgba(55,36,25,.18));
+  animation: heroFloat 7s ease-in-out infinite;
+}
+
+@keyframes heroFloat {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-13px); }
+}
+
+.hero-side-note {
+  position: absolute;
+  right: 28px;
+  bottom: 35px;
+  writing-mode: vertical-rl;
+  color: #887968;
+  letter-spacing: 3px;
+  font-size: 8px;
+  text-transform: uppercase;
+}
+
+/* -------------------------
+   MARQUEE
+------------------------- */
+
+.marquee {
+  background: var(--wine);
+  color: #f4e9dc;
+  overflow: hidden;
+  padding: 15px 0;
+  white-space: nowrap;
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 30s linear infinite;
+}
+
+.marquee-track span {
+  font-family: var(--serif);
+  font-size: 21px;
+  letter-spacing: 3px;
+  padding: 0 35px;
+}
+
+.marquee-track i {
+  font-style: normal;
+  color: #d4b98e;
+}
+
+@keyframes marquee {
+  to { transform: translateX(-50%); }
+}
+
+/* -------------------------
+   SECTION INTRO
+------------------------- */
+
+.section-intro {
+  text-align: center;
+  padding: 120px 20px 70px;
+}
+
+.section-intro .eyebrow {
+  margin-bottom: 18px;
+}
+
+.section-intro h2 {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(49px, 6vw, 82px);
+  line-height: .95;
+}
+
+.section-intro h2 em {
+  color: var(--wine);
+  font-weight: 300;
+}
+
+.section-intro p {
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.9;
+  max-width: 430px;
+  margin: 22px auto 0;
+}
+
+/* -------------------------
+   SCROLL COLLECTION
+------------------------- */
+
+.collection {
+  --product-accent: #b99a6d;
+  --product-bg: #e8dfd2;
+
+  padding: 0 6% 110px;
+  background: var(--cream);
+}
+
+.collection-topline {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 12px;
-  color: #8f8676;
-  font-size: 7px;
+  border-top: 1px solid var(--line);
+  padding: 17px 0;
+  color: var(--muted);
+  font-size: 8px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.collection-layout {
+  display: grid;
+  grid-template-columns: 1.05fr .95fr;
+  gap: 8%;
+  align-items: start;
+}
+
+/* Sticky image panel */
+
+.product-stage {
+  height: 78vh;
+  min-height: 540px;
+  max-height: 800px;
+  position: sticky;
+  top: 100px;
+  background: var(--product-bg);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .7s ease;
+}
+
+.product-stage::before {
+  content: "";
+  position: absolute;
+  width: 75%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: rgba(255,255,255,.38);
+  filter: blur(35px);
+  transition: .7s;
+}
+
+.stage-number {
+  position: absolute;
+  top: 25px;
+  left: 28px;
+  font-family: var(--serif);
+  font-size: 18px;
+  color: rgba(40,30,25,.48);
+  z-index: 4;
+}
+
+.stage-label {
+  position: absolute;
+  right: 25px;
+  top: 28px;
+  font-size: 8px;
+  letter-spacing: 3px;
+  color: rgba(40,30,25,.55);
+  text-transform: uppercase;
+  z-index: 4;
+}
+
+.stage-image {
+  width: 88%;
+  height: 88%;
+  max-height: 680px;
+  object-fit: contain;
+  position: relative;
+  z-index: 2;
+  filter: drop-shadow(0 25px 28px rgba(50,35,25,.15));
+  transition: opacity .5s ease, transform .7s ease;
+}
+
+.stage-image.switching {
+  opacity: 0;
+  transform: translateY(25px) scale(.95);
+}
+
+.stage-bottom {
+  position: absolute;
+  bottom: 24px;
+  left: 28px;
+  right: 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 4;
+  color: rgba(40,30,25,.62);
+  font-size: 8px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.stage-progress {
+  height: 2px;
+  width: 100%;
+  background: rgba(40,30,25,.13);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 5;
+}
+
+.stage-progress span {
+  height: 100%;
+  width: 20%;
+  display: block;
+  background: var(--wine);
+  transition: width .5s ease;
+}
+
+/* Scroll chapters */
+
+.product-chapters {
+  position: relative;
+}
+
+.scent-step {
+  min-height: 78vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 65px 0;
+  border-bottom: 1px solid var(--line);
+  opacity: .42;
+  transform: translateY(15px);
+  transition: opacity .6s ease, transform .6s ease;
+  scroll-margin-top: 100px;
+}
+
+.scent-step.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.step-index {
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: var(--wine);
+  margin-bottom: 23px;
+}
+
+.scent-step h3 {
+  font-family: var(--serif);
+  font-size: clamp(65px, 8vw, 105px);
+  line-height: .82;
+  font-weight: 300;
+  letter-spacing: -2px;
+}
+
+.step-tagline {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 24px;
+  color: var(--wine);
+  margin-top: 20px;
+}
+
+.step-description {
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 2.1;
+  max-width: 340px;
+  margin-top: 22px;
+}
+
+.step-notes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 27px;
+}
+
+.step-notes span {
+  border: 1px solid rgba(48,37,32,.2);
+  padding: 9px 13px;
+  color: #685b52;
+  font-size: 8px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.step-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 22px;
+  align-self: flex-start;
+  margin-top: 35px;
+  border-bottom: 1px solid var(--wine);
+  padding-bottom: 10px;
+  color: var(--wine);
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: gap .3s;
+}
+
+.step-link:hover {
+  gap: 34px;
+}
+
+/* -------------------------
+   PRODUCT QUICK NAV
+------------------------- */
+
+.product-nav {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 35px 0 0;
+}
+
+.product-nav button {
+  background: transparent;
+  border: 1px solid var(--line);
+  padding: 12px 17px;
+  font-size: 8px;
+  letter-spacing: 1.5px;
+  color: var(--muted);
+  cursor: pointer;
+  transition: .3s;
+}
+
+.product-nav button:hover,
+.product-nav button.active {
+  background: var(--wine);
+  border-color: var(--wine);
+  color: #fff8f0;
+}
+
+/* -------------------------
+   BRAND STORY
+------------------------- */
+
+.story {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 570px;
+  background: #e6ddd1;
+}
+
+.story-visual {
+  position: relative;
+  min-height: 500px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 50%, #d1bda6, #e6ddd1 70%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.story-visual::before {
+  content: "P";
+  font-family: var(--serif);
+  font-size: 450px;
+  font-weight: 300;
+  color: rgba(255,255,255,.23);
+  position: absolute;
+}
+
+.story-visual img {
+  width: 65%;
+  height: 85%;
+  object-fit: contain;
+  position: relative;
+  z-index: 2;
+  filter: drop-shadow(0 25px 25px rgba(50,35,25,.16));
+}
+
+.story-copy {
+  padding: 90px 12%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.story-copy .eyebrow {
+  margin-bottom: 22px;
+}
+
+.story-copy h2 {
+  font-family: var(--serif);
+  font-size: clamp(52px, 6vw, 82px);
+  line-height: .9;
+  font-weight: 300;
+}
+
+.story-copy h2 em {
+  color: var(--wine);
+  font-weight: 300;
+}
+
+.story-copy p {
+  color: #74685f;
+  font-size: 11px;
+  line-height: 2.1;
+  margin-top: 25px;
+  max-width: 380px;
+}
+
+/* -------------------------
+   CLOSING BANNER
+------------------------- */
+
+.closing {
+  background: var(--wine);
+  color: #f3e9dd;
+  text-align: center;
+  padding: 105px 20px 110px;
+  position: relative;
+  overflow: hidden;
+}
+
+.closing::before,
+.closing::after {
+  content: "PAR";
+  position: absolute;
+  font-family: var(--serif);
+  font-size: 220px;
+  color: rgba(255,255,255,.035);
+  top: 15px;
+}
+
+.closing::before { left: -45px; }
+.closing::after { right: -45px; }
+
+.closing .eyebrow {
+  color: #d9bd94;
+  position: relative;
+  z-index: 2;
+}
+
+.closing h2 {
+  font-family: var(--serif);
+  font-size: clamp(55px, 8vw, 105px);
+  line-height: .9;
+  font-weight: 300;
+  position: relative;
+  z-index: 2;
+}
+
+.closing h2 em {
+  color: #d9bd94;
+}
+
+.closing p {
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: #e2d1c1;
+  margin-top: 22px;
+  position: relative;
+  z-index: 2;
+}
+
+.closing a {
+  display: inline-block;
+  margin-top: 30px;
+  border: 1px solid #d9bd94;
+  padding: 15px 28px;
+  color: #f3e9dd;
+  font-size: 8px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: .3s;
+  position: relative;
+  z-index: 2;
+}
+
+.closing a:hover {
+  background: #d9bd94;
+  color: var(--wine);
+}
+
+/* -------------------------
+   FOOTER
+------------------------- */
+
+.footer {
+  background: #241d1b;
+  color: #e9dfd2;
+  padding: 55px 6% 25px;
+}
+
+.footer-main {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 40px;
+  padding-bottom: 50px;
+}
+
+.footer-logo {
+  font-family: var(--serif);
+  font-size: 57px;
+  letter-spacing: 15px;
+}
+
+.footer-description {
+  color: #a99b8e;
+  font-size: 10px;
+  line-height: 2;
+  max-width: 260px;
+  margin-top: 12px;
+}
+
+.footer-column h4 {
+  color: #c9a979;
+  font-size: 8px;
   letter-spacing: 3px;
   text-transform: uppercase;
-  position: relative;
-  z-index: 5;
-  flex-shrink: 0;
+  margin-bottom: 20px;
 }
 
-.par-footer span:nth-child(2) {
-  color: var(--accent);
+.footer-column a {
+  display: block;
+  color: #c0b3a6;
+  font-size: 10px;
+  margin: 12px 0;
+  transition: color .3s;
 }
 
-/* ANIMATION */
-
-@keyframes imageFloat {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-9px); }
+.footer-column a:hover {
+  color: white;
 }
 
-/* TABLET */
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,.13);
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  color: #8e8177;
+  font-size: 8px;
+  letter-spacing: 1px;
+}
 
-@media (max-width: 850px) {
-  .par-poster {
+/* -------------------------
+   REVEAL ANIMATION
+------------------------- */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(25px);
+  transition: opacity .8s ease, transform .8s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* -------------------------
+   MOBILE NAV
+------------------------- */
+
+.mobile-menu {
+  display: none;
+  position: absolute;
+  top: 82px;
+  left: 0;
+  width: 100%;
+  background: var(--cream);
+  padding: 20px 6% 25px;
+  border-bottom: 1px solid var(--line);
+  z-index: 99;
+}
+
+.mobile-menu.open {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.mobile-menu a {
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* -------------------------
+   RESPONSIVE
+------------------------- */
+
+@media (max-width: 900px) {
+  .header {
+    padding: 0 4%;
+  }
+
+  .nav-left,
+  .nav-right {
+    gap: 15px;
+  }
+
+  .hero-copy {
+    padding-left: 8%;
+  }
+
+  .collection {
     padding-left: 4%;
     padding-right: 4%;
   }
 
-  .par-main {
-    grid-template-columns: .95fr 1.1fr .8fr;
+  .collection-layout {
+    gap: 5%;
   }
 
-  .par-heading {
-    font-size: clamp(42px, 7vw, 65px);
+  .product-stage {
+    height: 70vh;
+    min-height: 470px;
   }
 
-  .par-description {
-    font-size: 9px;
+  .scent-step {
+    min-height: 70vh;
   }
 
-  .par-right-quote {
-    font-size: 19px;
-  }
-
-  .par-image {
-    max-height: 500px;
+  .story-copy {
+    padding: 70px 9%;
   }
 }
 
-/* MOBILE */
-
-@media (max-width: 600px) {
-  .par-poster {
-    padding: 13px 5% 10px;
+@media (max-width: 650px) {
+  html {
+    scroll-padding-top: 70px;
   }
 
-  .par-poster::after {
-    inset: 6px;
+  .announcement {
+    height: 25px;
+    font-size: 7px;
+    letter-spacing: 2px;
   }
 
-  .par-logo {
-    font-size: 31px;
+  .header {
+    height: 66px;
+    grid-template-columns: 1fr auto 1fr;
+    padding: 0 5%;
+  }
+
+  .nav-left,
+  .nav-right {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: block;
+    justify-self: start;
+  }
+
+  .logo {
+    font-size: 36px;
     letter-spacing: 9px;
   }
 
-  .par-header-center {
-    display: none;
+  .mobile-menu {
+    top: 66px;
   }
 
-  .par-edition {
-    font-size: 6px;
-    letter-spacing: 1px;
-  }
-
-  .par-line {
-    margin-top: 8px;
-  }
-
-  .par-main {
-    display: grid;
+  .hero {
+    height: auto;
+    min-height: 0;
+    max-height: none;
     grid-template-columns: 1fr;
-    grid-template-rows: auto minmax(0, 1fr);
+  }
+
+  .hero-copy {
+    padding: 70px 8% 35px;
     align-items: center;
-    padding-top: 10px;
-  }
-
-  .par-left {
-    grid-column: 1;
     text-align: center;
-    padding: 0;
   }
 
-  .par-overline {
-    font-size: 7px;
-    letter-spacing: 3px;
-    margin-bottom: 8px;
+  .hero .eyebrow {
+    margin-bottom: 22px;
   }
 
-  .par-heading {
-    font-size: clamp(34px, 9vw, 51px);
-    max-width: none;
-    line-height: .9;
+  .hero h1 {
+    font-size: clamp(75px, 19vw, 112px);
+    letter-spacing: -3px;
   }
 
-  .par-description {
-    margin: 8px auto 0;
-    font-size: 8px;
-    line-height: 1.55;
-    min-height: 0;
-    max-width: 280px;
+  .hero h1 span {
+    margin-left: 20px;
   }
 
-  .par-notes,
-  .par-discover,
-  .par-right {
+  .hero-description {
+    font-size: 10px;
+    margin-top: 22px;
+  }
+
+  .hero-copy .primary-button {
+    margin-top: 23px;
+  }
+
+  .hero-caption {
     display: none;
   }
 
-  .par-center {
-    grid-column: 1;
-    grid-row: 2;
-    min-height: 0;
+  .hero-visual {
+    height: 390px;
+  }
+
+  .hero-image {
+    width: 75%;
     height: 100%;
   }
 
-  .par-image {
-    max-height: 100%;
-    width: 100%;
-  }
-
-  .par-halo {
-    width: 70vw;
-  }
-
-  .par-orbit {
-    width: 75vw;
-  }
-
-  .par-orbit-two {
-    width: 65vw;
-  }
-
-  .par-bottom {
-    padding-top: 9px;
-  }
-
-  .par-selector-heading {
+  .hero-side-note {
+    right: 12px;
+    bottom: 15px;
     font-size: 6px;
-    letter-spacing: 2px;
-    margin-bottom: 8px;
   }
 
-  .par-selector {
-    gap: 3px;
+  .marquee {
+    padding: 12px 0;
   }
 
-  .par-option {
-    padding: 8px 2px 3px;
+  .marquee-track span {
+    font-size: 17px;
+    padding: 0 22px;
   }
 
-  .par-option-number {
+  .section-intro {
+    padding: 80px 8% 45px;
+  }
+
+  .section-intro h2 {
+    font-size: 58px;
+  }
+
+  .collection {
+    padding: 0 5% 75px;
+  }
+
+  .collection-topline {
     font-size: 6px;
     letter-spacing: 1px;
   }
 
-  .par-option-name {
-    font-size: clamp(11px, 3.3vw, 17px);
-    letter-spacing: 0;
+  .collection-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
   }
 
-  .par-option-notes {
-    display: none;
+  .product-stage {
+    position: sticky;
+    top: 66px;
+    width: 100%;
+    height: 43svh;
+    min-height: 280px;
+    max-height: 390px;
+    z-index: 10;
+    flex-shrink: 0;
   }
 
-  .par-footer {
-    font-size: 5px;
-    letter-spacing: .5px;
-    padding-top: 9px;
-  }
-}
-
-/* SHORT LAPTOP SCREENS */
-
-@media (max-height: 650px) and (min-width: 601px) {
-  .par-poster {
-    padding-top: 11px;
-    padding-bottom: 8px;
+  .stage-image {
+    width: 75%;
+    height: 88%;
   }
 
-  .par-image {
-    max-height: 440px;
+  .stage-number {
+    top: 13px;
+    left: 14px;
+    font-size: 15px;
   }
 
-  .par-heading {
-    font-size: clamp(42px, 5vw, 65px);
+  .stage-label {
+    top: 16px;
+    right: 14px;
+    font-size: 6px;
+    letter-spacing: 1px;
   }
 
-  .par-description {
-    margin-top: 13px;
+  .stage-bottom {
+    bottom: 13px;
+    left: 14px;
+    right: 14px;
+    font-size: 6px;
+    letter-spacing: 1px;
   }
 
-  .par-notes {
-    margin-top: 13px;
+  .scent-step {
+    min-height: 70svh;
+    padding: 65px 5px;
+    justify-content: center;
+    scroll-margin-top: 43svh;
   }
 
-  .par-discover {
-    margin-top: 16px;
+  .step-index {
+    margin-bottom: 18px;
   }
 
-  .par-bottom {
-    padding-top: 8px;
+  .scent-step h3 {
+    font-size: clamp(69px, 19vw, 95px);
   }
 
-  .par-selector-heading {
-    margin-bottom: 8px;
+  .step-tagline {
+    font-size: 21px;
+  }
+
+  .step-description {
+    font-size: 10px;
+    max-width: 330px;
+  }
+
+  .step-notes span {
+    padding: 8px 10px;
+    font-size: 7px;
+  }
+
+  .product-nav {
+    gap: 6px;
+    padding-top: 20px;
+  }
+
+  .product-nav button {
+    padding: 10px 11px;
+    font-size: 7px;
+  }
+
+  .story {
+    grid-template-columns: 1fr;
+  }
+
+  .story-visual {
+    min-height: 390px;
+    height: 390px;
+  }
+
+  .story-visual img {
+    width: 68%;
+  }
+
+  .story-copy {
+    padding: 70px 9% 80px;
+  }
+
+  .story-copy h2 {
+    font-size: 65px;
+  }
+
+  .closing {
+    padding: 80px 18px;
+  }
+
+  .closing h2 {
+    font-size: 65px;
+  }
+
+  .closing::before,
+  .closing::after {
+    font-size: 120px;
+  }
+
+  .footer {
+    padding: 45px 7% 22px;
+  }
+
+  .footer-main {
+    grid-template-columns: 1fr 1fr;
+    gap: 30px 20px;
+  }
+
+  .footer-brand {
+    grid-column: 1 / -1;
+  }
+
+  .footer-logo {
+    font-size: 48px;
+  }
+
+  .footer-bottom {
+    gap: 15px;
+    flex-wrap: wrap;
+    font-size: 7px;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
     animation-duration: .01ms !important;
     transition-duration: .01ms !important;
   }
@@ -653,333 +1138,688 @@ body {
 
 <body>
 
-<div class="par-poster" id="parPoster">
-
-  <header class="par-header">
-    <div class="par-logo">PAR</div>
-    <div class="par-header-center">The art of personal fragrance</div>
-    <div class="par-edition">The signature collection</div>
-  </header>
-
-  <div class="par-line"></div>
-
-  <main class="par-main">
-
-    <section class="par-left">
-
-      <div class="par-overline" id="overline">
-        The art of radiance
-      </div>
-
-      <h1 class="par-heading" id="heading">
-        A TOUCH<br><em>OF LIGHT.</em>
-      </h1>
-
-      <p class="par-description" id="description">
-        Bright, effortless and captivating. A luminous fragrance inspired by the beauty of a new beginning.
-      </p>
-
-      <div class="par-notes">
-        <span class="par-notes-label">Fragrance notes</span>
-        <span class="par-notes-value" id="notes">
-          Citrus · Jasmine · White Musk
-        </span>
-      </div>
-
-      <a href="#collection" class="par-discover" id="discover">
-        Discover the scent
-      </a>
-
-    </section>
-
-    <section class="par-center">
-
-      <div class="par-halo"></div>
-      <div class="par-orbit"></div>
-      <div class="par-orbit-two"></div>
-
-      <div class="par-image-wrap">
-        <img
-          class="par-image"
-          id="fragranceImage"
-          src="images/eclat.png"
-          alt="PAR ÉCLAT fragrance"
-        >
-      </div>
-
-    </section>
-
-    <section class="par-right">
-
-      <div class="par-number" id="number">01</div>
-
-      <div class="par-number-label">The fragrance</div>
-
-      <div class="par-side-line"></div>
-
-      <div class="par-right-quote" id="quote">
-        A moment of light. A lasting impression.
-      </div>
-
-    </section>
-
-  </main>
-
-  <section class="par-bottom" id="collection">
-
-    <div class="par-selector-heading">
-      Explore the five signatures · Select your fragrance
-    </div>
-
-    <div class="par-selector">
-
-      <button class="par-option active" data-index="0">
-        <span class="par-option-number">01</span>
-        <span class="par-option-name">ÉCLAT</span>
-        <span class="par-option-notes">Radiant · Fresh</span>
-      </button>
-
-      <button class="par-option" data-index="1">
-        <span class="par-option-number">02</span>
-        <span class="par-option-name">VELVET</span>
-        <span class="par-option-notes">Soft · Floral</span>
-      </button>
-
-      <button class="par-option" data-index="2">
-        <span class="par-option-number">03</span>
-        <span class="par-option-name">NOIR</span>
-        <span class="par-option-notes">Deep · Woody</span>
-      </button>
-
-      <button class="par-option" data-index="3">
-        <span class="par-option-number">04</span>
-        <span class="par-option-name">AMOUR</span>
-        <span class="par-option-notes">Warm · Romantic</span>
-      </button>
-
-      <button class="par-option" data-index="4">
-        <span class="par-option-number">05</span>
-        <span class="par-option-name">ESSENCE</span>
-        <span class="par-option-notes">Pure · Timeless</span>
-      </button>
-
-    </div>
-
-  </section>
-
-  <footer class="par-footer">
-    <span>Crafted to be remembered</span>
-    <span>Five scents · One identity</span>
-    <span>PAR PARFUM © 2026</span>
-  </footer>
-
+<!-- ANNOUNCEMENT -->
+<div class="announcement">
+  Discover the signature collection · PAR PARFUM
 </div>
+
+<!-- HEADER -->
+<header class="header">
+
+  <nav class="nav-left">
+    <a class="nav-link" href="#home">Home</a>
+    <a class="nav-link" href="#collection">Collection</a>
+  </nav>
+
+  <a href="#home" class="logo">PAR</a>
+
+  <nav class="nav-right">
+    <a class="nav-link" href="#story">Our story</a>
+    <a class="nav-link" href="#contact">Contact</a>
+  </nav>
+
+  <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
+    ☰
+  </button>
+
+</header>
+
+<nav class="mobile-menu" id="mobileMenu">
+  <a href="#home">Home</a>
+  <a href="#collection">Collection</a>
+  <a href="#story">Our story</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+
+  <div class="hero-copy">
+
+    <div class="eyebrow">A new expression of fragrance</div>
+
+    <h1>
+      SCENT<br>
+      <span>of self.</span>
+    </h1>
+
+    <p class="hero-description">
+      More than a fragrance. An expression of identity,
+      emotion and individuality. Discover the world
+      of PAR PARFUM.
+    </p>
+
+    <a href="#collection" class="primary-button">
+      Explore collection <span>↗</span>
+    </a>
+
+    <div class="hero-caption">
+      Five signatures · Endless impressions
+    </div>
+
+  </div>
+
+  <div class="hero-visual">
+
+    <img
+      class="hero-image"
+      src="images/eclat.png"
+      alt="PAR ÉCLAT perfume"
+    >
+
+    <div class="hero-side-note">
+      The signature collection
+    </div>
+
+  </div>
+
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee">
+  <div class="marquee-track">
+    <span>PAR PARFUM <i>✳</i> A SCENT OF YOUR OWN <i>✳</i> THE ART OF FRAGRANCE <i>✳</i></span>
+    <span>PAR PARFUM <i>✳</i> A SCENT OF YOUR OWN <i>✳</i> THE ART OF FRAGRANCE <i>✳</i></span>
+  </div>
+</div>
+
+<!-- COLLECTION INTRO -->
+<section class="section-intro reveal">
+
+  <div class="eyebrow">The signature collection</div>
+
+  <h2>
+    Find your<br>
+    <em>fragrance.</em>
+  </h2>
+
+  <p>
+    Five distinct compositions. Five different moods.
+    Discover the fragrance that feels like you.
+  </p>
+
+</section>
+
+<!-- SCROLL COLLECTION -->
+<section class="collection" id="collection">
+
+  <div class="collection-topline">
+    <span>PAR · The collection</span>
+    <span>Scroll to discover ↓</span>
+  </div>
+
+  <div class="collection-layout">
+
+    <!-- STICKY PRODUCT IMAGE -->
+    <div class="product-stage" id="productStage">
+
+      <div class="stage-number" id="stageNumber">01 / 05</div>
+
+      <div class="stage-label">PAR PARFUM</div>
+
+      <img
+        class="stage-image"
+        id="stageImage"
+        src="images/eclat.png"
+        alt="PAR ÉCLAT fragrance"
+      >
+
+      <div class="stage-bottom">
+        <span id="stageName">ÉCLAT</span>
+        <span>Signature fragrance</span>
+      </div>
+
+      <div class="stage-progress">
+        <span id="stageProgress"></span>
+      </div>
+
+    </div>
+
+    <!-- SCROLLING PRODUCT CONTENT -->
+    <div class="product-chapters">
+
+      <article
+        class="scent-step active"
+        id="scent-eclat"
+        data-index="0"
+      >
+        <div class="step-index">01 — THE RADIANT ONE</div>
+
+        <h3>ÉCLAT</h3>
+
+        <div class="step-tagline">
+          A touch of light.
+        </div>
+
+        <p class="step-description">
+          Bright, effortless and captivating.
+          A luminous fragrance inspired by the beauty
+          of a new beginning. A delicate balance of
+          freshness and elegance.
+        </p>
+
+        <div class="step-notes">
+          <span>Citrus</span>
+          <span>Jasmine</span>
+          <span>White musk</span>
+        </div>
+
+        <a href="#contact" class="step-link">
+          Discover ÉCLAT <span>↗</span>
+        </a>
+      </article>
+
+      <article
+        class="scent-step"
+        id="scent-velvet"
+        data-index="1"
+      >
+        <div class="step-index">02 — THE ROMANTIC ONE</div>
+
+        <h3>VELVET</h3>
+
+        <div class="step-tagline">
+          Feel the softness.
+        </div>
+
+        <p class="step-description">
+          An intimate floral embrace. Delicate petals
+          meet sensual warmth in a fragrance that feels
+          like silk. Elegant, soft and quietly unforgettable.
+        </p>
+
+        <div class="step-notes">
+          <span>Rose</span>
+          <span>Peony</span>
+          <span>Sandalwood</span>
+        </div>
+
+        <a href="#contact" class="step-link">
+          Discover VELVET <span>↗</span>
+        </a>
+      </article>
+
+      <article
+        class="scent-step"
+        id="scent-noir"
+        data-index="2"
+      >
+        <div class="step-index">03 — THE MYSTERIOUS ONE</div>
+
+        <h3>NOIR</h3>
+
+        <div class="step-tagline">
+          Own the mystery.
+        </div>
+
+        <p class="step-description">
+          Bold, magnetic and unforgettable.
+          A deep composition with a distinctive character,
+          created for those who leave an impression.
+        </p>
+
+        <div class="step-notes">
+          <span>Oud</span>
+          <span>Amber</span>
+          <span>Black pepper</span>
+        </div>
+
+        <a href="#contact" class="step-link">
+          Discover NOIR <span>↗</span>
+        </a>
+      </article>
+
+      <article
+        class="scent-step"
+        id="scent-amour"
+        data-index="3"
+      >
+        <div class="step-index">04 — THE EMOTIONAL ONE</div>
+
+        <h3>AMOUR</h3>
+
+        <div class="step-tagline">
+          Made of emotion.
+        </div>
+
+        <p class="step-description">
+          A romantic expression of warmth and desire.
+          An elegant fragrance that lingers like
+          a beautiful memory.
+        </p>
+
+        <div class="step-notes">
+          <span>Rose</span>
+          <span>Vanilla</span>
+          <span>Pink pepper</span>
+        </div>
+
+        <a href="#contact" class="step-link">
+          Discover AMOUR <span>↗</span>
+        </a>
+      </article>
+
+      <article
+        class="scent-step"
+        id="scent-essence"
+        data-index="4"
+      >
+        <div class="step-index">05 — THE TIMELESS ONE</div>
+
+        <h3>ESSENCE</h3>
+
+        <div class="step-tagline">
+          Pure by nature.
+        </div>
+
+        <p class="step-description">
+          Understated, harmonious and timeless.
+          A refined blend inspired by nature,
+          simplicity and quiet luxury.
+        </p>
+
+        <div class="step-notes">
+          <span>Green tea</span>
+          <span>Cedar</span>
+          <span>White flowers</span>
+        </div>
+
+        <a href="#contact" class="step-link">
+          Discover ESSENCE <span>↗</span>
+        </a>
+      </article>
+
+    </div>
+
+  </div>
+
+  <!-- CLICKABLE FRAGRANCE NAVIGATION -->
+  <div class="product-nav">
+    <button class="active" data-go="0">01 ÉCLAT</button>
+    <button data-go="1">02 VELVET</button>
+    <button data-go="2">03 NOIR</button>
+    <button data-go="3">04 AMOUR</button>
+    <button data-go="4">05 ESSENCE</button>
+  </div>
+
+</section>
+
+<!-- BRAND STORY -->
+<section class="story" id="story">
+
+  <div class="story-visual">
+    <img
+      src="images/essence.png"
+      alt="PAR ESSENCE perfume"
+      loading="lazy"
+    >
+  </div>
+
+  <div class="story-copy reveal">
+
+    <div class="eyebrow">The philosophy of PAR</div>
+
+    <h2>
+      A scent.<br>
+      <em>A feeling.</em><br>
+      An identity.
+    </h2>
+
+    <p>
+      At PAR PARFUM, fragrance is more than an accessory.
+      It is a personal signature — an invisible expression
+      of who you are and how you want to be remembered.
+    </p>
+
+    <p>
+      Every composition tells a different story.
+      Find the one that becomes yours.
+    </p>
+
+    <a href="#collection" class="step-link">
+      Explore our fragrances <span>↗</span>
+    </a>
+
+  </div>
+
+</section>
+
+<!-- CLOSING -->
+<section class="closing" id="contact">
+
+  <div class="eyebrow">Your signature awaits</div>
+
+  <h2>
+    Leave a<br>
+    <em>lasting impression.</em>
+  </h2>
+
+  <p>
+    Discover the fragrance that speaks without words.
+  </p>
+
+  <a href="#collection">
+    Explore the collection
+  </a>
+
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+
+  <div class="footer-main">
+
+    <div class="footer-brand">
+      <div class="footer-logo">PAR</div>
+
+      <p class="footer-description">
+        A personal expression of fragrance.
+        Five signatures, one identity.
+      </p>
+    </div>
+
+    <div class="footer-column">
+      <h4>Explore</h4>
+      <a href="#home">Home</a>
+      <a href="#collection">Collection</a>
+      <a href="#story">Our story</a>
+    </div>
+
+    <div class="footer-column">
+      <h4>Fragrances</h4>
+      <a href="#scent-eclat">ÉCLAT</a>
+      <a href="#scent-velvet">VELVET</a>
+      <a href="#scent-noir">NOIR</a>
+      <a href="#scent-amour">AMOUR</a>
+      <a href="#scent-essence">ESSENCE</a>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <span>© 2026 PAR PARFUM</span>
+    <span>Crafted to be remembered</span>
+    <span>The art of fragrance</span>
+  </div>
+
+</footer>
 
 <script>
 
-/* PAR PARFUM — IMAGE PATHS UPDATED */
+/* --------------------------------
+   PAR PARFUM — PRODUCT DATA
+-------------------------------- */
 
-const fragrances = [
+const products = [
 
   {
     name: "ÉCLAT",
-    number: "01",
     image: "images/eclat.png",
-    heading: "A TOUCH<br><em>OF LIGHT.</em>",
-    description: "Bright, effortless and captivating. A luminous fragrance inspired by the beauty of a new beginning.",
-    notes: "Citrus · Jasmine · White Musk",
-    quote: "A moment of light. A lasting impression.",
-    accent: "#e0bd7d",
-    glow: "rgba(204,157,82,.30)",
-    mood: "#302719",
-    overline: "The art of radiance"
+    background: "#e8dfd2",
+    accent: "#b69a70"
   },
 
   {
     name: "VELVET",
-    number: "02",
     image: "images/velvet.png",
-    heading: "FEEL THE<br><em>SOFTNESS.</em>",
-    description: "An intimate floral embrace. Delicate petals meet sensual warmth in a fragrance that feels like silk.",
-    notes: "Rose · Peony · Sandalwood",
-    quote: "Softness is the ultimate sophistication.",
-    accent: "#dba59a",
-    glow: "rgba(174,91,91,.30)",
-    mood: "#30201f",
-    overline: "The art of softness"
+    background: "#e6d8d4",
+    accent: "#8a4c50"
   },
 
   {
     name: "NOIR",
-    number: "03",
     image: "images/noir.png",
-    heading: "OWN THE<br><em>MYSTERY.</em>",
-    description: "Bold, magnetic and unforgettable. A deep composition created for those who leave an impression.",
-    notes: "Oud · Amber · Black Pepper",
-    quote: "Some stories are best left mysterious.",
-    accent: "#bd956d",
-    glow: "rgba(126,83,51,.32)",
-    mood: "#211a16",
-    overline: "The art of mystery"
+    background: "#d9d5d0",
+    accent: "#40332e"
   },
 
   {
     name: "AMOUR",
-    number: "04",
     image: "images/amour.png",
-    heading: "MADE OF<br><em>EMOTION.</em>",
-    description: "A romantic expression of warmth and desire. An elegant fragrance that lingers like a beautiful memory.",
-    notes: "Rose · Vanilla · Pink Pepper",
-    quote: "Wear the feeling. Remember the moment.",
-    accent: "#e0aaa1",
-    glow: "rgba(192,115,125,.30)",
-    mood: "#302023",
-    overline: "The art of emotion"
+    background: "#eedbd5",
+    accent: "#bd7f79"
   },
 
   {
     name: "ESSENCE",
-    number: "05",
     image: "images/essence.png",
-    heading: "PURE<br><em>BY NATURE.</em>",
-    description: "Understated, harmonious and timeless. A refined blend inspired by nature and quiet luxury.",
-    notes: "Green Tea · Cedar · White Flowers",
-    quote: "True elegance never asks for attention.",
-    accent: "#c3c9a2",
-    glow: "rgba(129,151,103,.30)",
-    mood: "#20251b",
-    overline: "The art of simplicity"
+    background: "#dce0d2",
+    accent: "#778268"
   }
 
 ];
 
-const poster = document.getElementById("parPoster");
-const image = document.getElementById("fragranceImage");
-const options = document.querySelectorAll(".par-option");
 
-let currentIndex = 0;
-let autoPlay;
+/* --------------------------------
+   ELEMENTS
+-------------------------------- */
 
-function showFragrance(index) {
+const stage = document.getElementById("productStage");
+const stageImage = document.getElementById("stageImage");
+const stageName = document.getElementById("stageName");
+const stageNumber = document.getElementById("stageNumber");
+const stageProgress = document.getElementById("stageProgress");
 
-  currentIndex = index;
+const steps = document.querySelectorAll(".scent-step");
+const navButtons = document.querySelectorAll(".product-nav button");
 
-  const scent = fragrances[index];
+let currentProduct = 0;
 
-  poster.style.setProperty("--accent", scent.accent);
-  poster.style.setProperty("--glow", scent.glow);
-  poster.style.setProperty("--mood", scent.mood);
 
-  document.getElementById("overline").textContent =
-    scent.overline;
+/* --------------------------------
+   CHANGE FEATURED PRODUCT
+-------------------------------- */
 
-  document.getElementById("heading").innerHTML =
-    scent.heading;
+function changeProduct(index) {
 
-  document.getElementById("description").textContent =
-    scent.description;
+  if (index < 0 || index >= products.length) return;
 
-  document.getElementById("notes").textContent =
-    scent.notes;
+  if (index === currentProduct && stageImage.src) {
+    updateActiveStates(index);
+    return;
+  }
 
-  document.getElementById("number").textContent =
-    scent.number;
+  currentProduct = index;
 
-  document.getElementById("quote").textContent =
-    scent.quote;
+  const product = products[index];
 
-  image.classList.add("changing");
+  stageImage.classList.add("switching");
 
   const nextImage = new Image();
 
   nextImage.onload = function() {
 
-    image.src = scent.image;
-    image.alt = "PAR " + scent.name + " fragrance";
+    stageImage.src = product.image;
+    stageImage.alt = "PAR " + product.name + " perfume";
+
+    stage.style.setProperty(
+      "--product-bg",
+      product.background
+    );
+
+    stage.style.setProperty(
+      "--product-accent",
+      product.accent
+    );
+
+    stageName.textContent = product.name;
+
+    stageNumber.textContent =
+      String(index + 1).padStart(2, "0") + " / 05";
+
+    stageProgress.style.width =
+      ((index + 1) / products.length * 100) + "%";
 
     requestAnimationFrame(() => {
-      image.classList.remove("changing");
+      stageImage.classList.remove("switching");
     });
 
   };
 
   nextImage.onerror = function() {
 
-    console.error("Could not load image:", scent.image);
-    image.classList.remove("changing");
+    console.error("Image could not be loaded:", product.image);
+
+    stageImage.classList.remove("switching");
 
   };
 
-  nextImage.src = scent.image;
+  nextImage.src = product.image;
 
-  options.forEach((option, i) => {
+  updateActiveStates(index);
 
-    option.classList.toggle("active", i === index);
+}
 
-    option.setAttribute(
-      "aria-pressed",
-      i === index ? "true" : "false"
-    );
 
+/* --------------------------------
+   ACTIVE SCROLL STATES
+-------------------------------- */
+
+function updateActiveStates(index) {
+
+  steps.forEach((step, i) => {
+    step.classList.toggle("active", i === index);
+  });
+
+  navButtons.forEach((button, i) => {
+    button.classList.toggle("active", i === index);
   });
 
 }
 
-options.forEach((option) => {
 
-  option.addEventListener("click", () => {
+/* --------------------------------
+   SCROLL DETECTION
+   Product changes when each chapter
+   enters the center of the screen.
+-------------------------------- */
 
-    const index = Number(option.dataset.index);
+const productObserver = new IntersectionObserver(
 
-    showFragrance(index);
-    restartAutoPlay();
+  (entries) => {
+
+    entries.forEach((entry) => {
+
+      if (entry.isIntersecting) {
+
+        const index = Number(entry.target.dataset.index);
+
+        changeProduct(index);
+
+      }
+
+    });
+
+  },
+
+  {
+    root: null,
+    rootMargin: "-42% 0px -42% 0px",
+    threshold: 0
+  }
+
+);
+
+steps.forEach((step) => {
+  productObserver.observe(step);
+});
+
+
+/* --------------------------------
+   CLICK PRODUCT NAVIGATION
+-------------------------------- */
+
+navButtons.forEach((button) => {
+
+  button.addEventListener("click", () => {
+
+    const index = Number(button.dataset.go);
+
+    const target = steps[index];
+
+    if (target) {
+      target.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+      });
+    }
 
   });
 
 });
 
-document.getElementById("discover").addEventListener("click", (event) => {
 
-  event.preventDefault();
+/* --------------------------------
+   MOBILE MENU
+-------------------------------- */
 
-  const next = (currentIndex + 1) % fragrances.length;
+const menuToggle = document.getElementById("menuToggle");
+const mobileMenu = document.getElementById("mobileMenu");
 
-  showFragrance(next);
-  restartAutoPlay();
+menuToggle.addEventListener("click", () => {
+
+  const open = mobileMenu.classList.toggle("open");
+
+  menuToggle.textContent = open ? "×" : "☰";
+
+  menuToggle.setAttribute(
+    "aria-expanded",
+    open ? "true" : "false"
+  );
 
 });
 
-function startAutoPlay() {
+mobileMenu.querySelectorAll("a").forEach((link) => {
 
-  clearInterval(autoPlay);
+  link.addEventListener("click", () => {
 
-  autoPlay = setInterval(() => {
+    mobileMenu.classList.remove("open");
+    menuToggle.textContent = "☰";
+    menuToggle.setAttribute("aria-expanded", "false");
 
-    const next = (currentIndex + 1) % fragrances.length;
+  });
 
-    showFragrance(next);
-
-  }, 6000);
-
-}
-
-function restartAutoPlay() {
-
-  clearInterval(autoPlay);
-  startAutoPlay();
-
-}
-
-poster.addEventListener("mouseenter", () => {
-  clearInterval(autoPlay);
 });
 
-poster.addEventListener("mouseleave", () => {
-  startAutoPlay();
+
+/* --------------------------------
+   REVEAL ANIMATIONS
+-------------------------------- */
+
+const revealObserver = new IntersectionObserver(
+
+  (entries) => {
+
+    entries.forEach((entry) => {
+
+      if (entry.isIntersecting) {
+
+        entry.target.classList.add("visible");
+
+        revealObserver.unobserve(entry.target);
+
+      }
+
+    });
+
+  },
+
+  {
+    threshold: 0.12
+  }
+
+);
+
+document.querySelectorAll(".reveal").forEach((element) => {
+  revealObserver.observe(element);
 });
 
-showFragrance(0);
-startAutoPlay();
+
+/* --------------------------------
+   INITIALIZE
+-------------------------------- */
+
+changeProduct(0);
 
 </script>
 
